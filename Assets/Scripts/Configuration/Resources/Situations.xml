@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Situations>
+
+  <Situation>
+      <Decision minister="">
+        blabla?
+        <Answer minister="">
+          blabla1
+          <parameter minister="" operation="" value=""/>
+          <parameter minister="" operation="" value=""/>
+          <parameter minister="" operation="" value=""/>
+          <parameter minister="" operation="" value=""/>
+        </Answer>
+        <Answer minister="">
+          blabla2
+          <parameter minister="" operation="" value=""/>
+          <parameter minister="" operation="" value=""/>
+          <parameter minister="" operation="" value=""/>
+          <parameter minister="" operation="" value=""/>
+        </Answer>
+      </Decision>
+  </Situation>
+    
+</Situations>
