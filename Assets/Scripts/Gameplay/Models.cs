@@ -1,10 +1,10 @@
 ﻿public class Models {
 
-	public enum ministers {
-		communication,
-		security,
-		foreign,
-		financial
+	public enum Ministers {
+		Communication,
+		Security,
+		Foreign,
+		Financial
 	}
 
 	[System.Serializable]
@@ -16,20 +16,20 @@
 	[System.Serializable]
 	public struct Decision {
 		public string description;
-		public ministers minister;
+		public Ministers minister;
 		public Answer[] answers;
 	}
 
 	[System.Serializable]
 	public struct Answer {
 		public string text;
-		public ministers minister;
+		public Ministers minister;
 		public Operation[] operation;
 	}
 
 	[System.Serializable]
 	public struct Operation {
-		public ministers minister;
+		public Ministers minister;
 		public int value;
 		public string operation;
 	}
