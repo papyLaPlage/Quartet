@@ -37,6 +37,8 @@ public class Parser : MonoBehaviour {
                 CreateSituation(node);
             }
         }
+
+        //return output;
     }
 
     void CreateSituation(XmlNode situationNode)
@@ -48,11 +50,13 @@ public class Parser : MonoBehaviour {
                 CreateDecision(node);
             }
         }
+
+        //return output;
     }
 
     void CreateDecision(XmlNode decisionNode)
     {
-        Debug.Log(decisionNode.Attributes["minister"].Value + " " + decisionNode.InnerText);
+        Debug.Log(decisionNode.Attributes["minister"].Value + " " + decisionNode.InnerText.Trim());
         foreach (XmlNode node in decisionNode.ChildNodes)
         {
             if (node.Name == "Answer")
@@ -60,11 +64,13 @@ public class Parser : MonoBehaviour {
                 CreateAnswer(node);
             }
         }
+
+        //return output;
     }
 
     void CreateAnswer(XmlNode answerNode)
     {
-        Debug.Log(answerNode.Attributes["minister"].Value + " " + answerNode.InnerText);
+        Debug.Log(answerNode.Attributes["minister"].Value.Trim() + " " + answerNode.InnerText.Trim());
         foreach (XmlNode node in answerNode.ChildNodes)
         {
             if (node.Name == "parameter")
@@ -72,6 +78,8 @@ public class Parser : MonoBehaviour {
 
             }
         }
+
+        //return output;
     }
 
     /*StateDefinition CreateState(XmlNode stateNode)

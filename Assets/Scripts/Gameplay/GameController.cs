@@ -1,6 +1,5 @@
 ﻿using UnityEngine;
 using System.Collections;
-using Models;
 
 public class GameController : MonoBehaviour {
 
@@ -26,29 +25,29 @@ public class GameController : MonoBehaviour {
 
 	#region GAME 
 
-	public void startGame() {
+	public void StartGame() {
 		this.currentSituationIndex = 0;
 	}
 
-	public void endGame() {
+	public void EndGame() {
 
 	}
 
-	public void showMinisterSituation(Models.ministers minister) {
+	public void ShowMinisterSituation(Models.Ministers minister) {
 		
 	}
 
 	#endregion
 
 	#region SITUATIONS
-	public void loadGameSitutations() {
+	public void LoadGameSitutations() {
 		// TODO : coder en dur situations ou importer depuis XML
 	}
 
-	public void loadSituation() {
+	public void LoadSituation() {
 		
 		if (this.currentSituationIndex >= this.situations.Length) {
-			return this.endGame ();
+			this.EndGame ();
 		}
 
 
@@ -62,7 +61,7 @@ public class GameController : MonoBehaviour {
 
 
 	public void Awake() {
-		this.situationController = new SituationController (this);
+		
 	}
 
 	public void Start () {
