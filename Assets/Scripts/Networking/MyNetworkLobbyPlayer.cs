@@ -2,7 +2,8 @@
 using System.Collections;
 using UnityEngine.Networking;
 
-public class MyNetworkLobbyPlayer : NetworkLobbyPlayer {
+public class MyNetworkLobbyPlayer : NetworkLobbyPlayer
+{
 
     /*public override void OnClientEnterLobby()
     {
