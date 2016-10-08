@@ -2,7 +2,7 @@
 <Situations>
 
   <Situation>
-    blablabla!
+    Attentat à Paris !
       <Decision minister="Communication">
         blabla?
         <Answer minister="Security">
@@ -72,5 +72,76 @@
       </Answer>
     </Decision>
   </Situation>
-    
+
+<Situation>
+    Bombardements russes sur Alep !
+      <Decision minister="Communication">
+        blabla?
+        <Answer minister="Security">
+          blabla1
+          <parameter minister="Security" operation="+" value="10"/>
+          <parameter minister="Communication" operation="+" value="5"/>
+          <parameter minister="Financial" operation="-" value="4"/>
+          <parameter minister="Foreign" operation="-" value="8"/>
+        </Answer>
+        <Answer minister="Foreign">
+          blabla2
+          <parameter minister="Foreign" operation="+" value="10"/>
+          <parameter minister="Financial" operation="+" value="5"/>
+          <parameter minister="Communication" operation="-" value="4"/>
+          <parameter minister="Security" operation="-" value="8"/>
+        </Answer>
+      </Decision>
+    <Decision minister="Security">
+      blabla?
+      <Answer minister="Communication">
+        blabla1
+        <parameter minister="Security" operation="+" value="10"/>
+        <parameter minister="Communication" operation="+" value="5"/>
+        <parameter minister="Financial" operation="-" value="4"/>
+        <parameter minister="Foreign" operation="-" value="8"/>
+      </Answer>
+      <Answer minister="Foreign">
+        blabla2
+        <parameter minister="Foreign" operation="+" value="10"/>
+        <parameter minister="Financial" operation="+" value="5"/>
+        <parameter minister="Communication" operation="-" value="4"/>
+        <parameter minister="Security" operation="-" value="8"/>
+      </Answer>
+    </Decision>
+    <Decision minister="Financial">
+      blabla?
+      <Answer minister="Security">
+        blabla1
+        <parameter minister="Security" operation="+" value="10"/>
+        <parameter minister="Communication" operation="+" value="5"/>
+        <parameter minister="Financial" operation="-" value="4"/>
+        <parameter minister="Foreign" operation="-" value="8"/>
+      </Answer>
+      <Answer minister="Foreign">
+        blabla2
+        <parameter minister="Foreign" operation="+" value="10"/>
+        <parameter minister="Financial" operation="+" value="5"/>
+        <parameter minister="Communication" operation="-" value="4"/>
+        <parameter minister="Security" operation="-" value="8"/>
+      </Answer>
+    </Decision>
+    <Decision minister="Foreign">
+      blabla?
+      <Answer minister="Security">
+        blabla1
+        <parameter minister="Security" operation="+" value="10"/>
+        <parameter minister="Communication" operation="+" value="5"/>
+        <parameter minister="Financial" operation="-" value="4"/>
+        <parameter minister="Foreign" operation="-" value="8"/>
+      </Answer>
+      <Answer minister="Financial">
+        blabla2
+        <parameter minister="Foreign" operation="+" value="10"/>
+        <parameter minister="Financial" operation="+" value="5"/>
+        <parameter minister="Communication" operation="-" value="4"/>
+        <parameter minister="Security" operation="-" value="8"/>
+      </Answer>
+    </Decision>
+  </Situation>
 </Situations>

@@ -40,11 +40,7 @@ public class GameController : MonoBehaviour {
 	}
 
 	public void EndGame() {
-
-	}
-
-	public void ShowMinisterSituation(Models.Ministers minister) {
-		
+		// TODO : End Game Code 
 	}
 
 	#endregion
@@ -53,46 +49,11 @@ public class GameController : MonoBehaviour {
 
 	public void LoadGameSitutations() {
 		Debug.Log ("Load Game Situations");
-        foreach (Models.Situation situation in GetComponent<Parser>().Load7Situations())
-            situations.Enqueue(situation);
-
-		/*Models.Answer a1 = new Models.Answer ();
-		a1.text = "Intervenir sur le territoire national";
-		a1.minister = Models.Ministers.Foreign;
-
-		Models.Answer a2 = new Models.Answer ();
-		a2.text = "Intervenir sur le territoire des terroristes";
-		a2.minister = Models.Ministers.Communication;
-
-		Queue<Models.Decision> decisions = new Queue<Models.Decision> ();
-
-		Models.Decision d = new Models.Decision (
-			"Riposte Militaire",
-			Models.Ministers.Security,
-			new Models.Answer[] {a1, a2}
-		);
-
-		decisions.Enqueue (d);
-
-		Models.Situation s = new Models.Situation (
-			"Attentats à Paris",
-			decisions
-		);
-
-		situations.Enqueue (s);*/
+		foreach (Models.Situation situation in GetComponent<Parser>().Load7Situations()) {
+			situations.Enqueue(situation);
+		}
 	}
 
-//	public void LoadSituation() {
-//		Debug.Log ("Load Current Situation");
-//		if (this.currentSituationIndex >= this.situations.Length) {
-//			Debug.Log ("Game Over");	
-//			this.EndGame ();
-//			return;
-//		}
-//
-//		Debug.Log ("Show situation");
-//		this.GetComponentInParent<SituationController>().ShowSituation (situations [this.currentSituationIndex], Models.Ministers.Security);
-//	}
 
 	public void PlayNextSituation() {
 
@@ -119,7 +80,7 @@ public class GameController : MonoBehaviour {
 	}
 
 	public void ProcessSituationSolo(Models.Situation situation) {
-		Debug.Log ("Process Situation Solo");
+		// If decisions to play are remaining in the queue, we display one of them
 		if (situation.decisions.Count > 0) {
 			Models.Decision decision = situation.decisions.Dequeue();
 			this.GetComponentInParent<DecisionController>().UpdateDecisionScreen (situation, decision);

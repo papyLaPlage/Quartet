@@ -64,6 +64,7 @@ public class Parser : MonoBehaviour {
         }
 		Queue<Models.Decision> decisions = new Queue<Models.Decision>(tempDecisions.ToArray());
 		output.decisions = decisions;
+		output.answerByMinister = new Models.Answer[System.Enum.GetNames(typeof(Models.Ministers)).Length];
         output.description = situationNode.InnerText.Trim();
 
         return output;
