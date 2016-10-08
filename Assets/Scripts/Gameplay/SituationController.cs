@@ -8,11 +8,17 @@ public class SituationController : MonoBehaviour {
 	public Text situtationText;
 	public Text decisionText;
 	public Text[] answerButtonsText;
+	public Slider[] sliders;
+	public RawImage[] gauges;
+	public GameController gameController;
+
 
 	// update the situation canvas with a given situation for a given minister
 	public void ShowSituation(Models.Situation situation, Models.Ministers minister) {
 		// Situation image and description
 		this.situtationText.text = situation.description;
+
+		// Update Image
 		//this.situationViewController.image = situation.image;
 
 		// Minister Decision description and answers
@@ -20,6 +26,29 @@ public class SituationController : MonoBehaviour {
 		this.decisionText.text = ministerDecision.description;
 		this.answerButtonsText[0].text = ministerDecision.answers[0].text;
 		this.answerButtonsText[1].text = ministerDecision.answers[1].text;
+
+
+
+		// Update Sliders
+		sliders[0].value = this.gameController.paramMinister1Public;
+		sliders[1].value = this.gameController.paramMinister2Public;
+		sliders[2].value = this.gameController.paramMinister3Public;
+		sliders[3].value = this.gameController.paramMinister4Public;
+
+		// Update Gauges 
+		Vector2 v = new Vector2 (gauges [0].GetComponent<RectTransform> ().sizeDelta.x, this.gameController.paramMinister1Public);
+		gauges[0].GetComponent<RectTransform>().sizeDelta = v;
+		v.y = this.gameController.paramMinister2Public;
+		gauges[1].GetComponent<RectTransform>().sizeDelta = v;
+		v.y = this.gameController.paramMinister3Public;
+		gauges[2].GetComponent<RectTransform>().sizeDelta = v;
+		v.y = this.gameController.paramMinister4Public;
+		gauges[3].GetComponent<RectTransform>().sizeDelta = v;
+
+	}
+
+	void Awake() {
+		this.gameController = this.GetComponentInParent<GameController> ();
 	}
 
 	// Use this for initialization
