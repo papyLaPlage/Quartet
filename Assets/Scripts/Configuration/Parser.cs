@@ -17,18 +17,21 @@ public class Parser : MonoBehaviour {
     void Start()
     {
         // read config and apply it
-        result = Load7Situations();
+        situationsDebug = Load7Situations();
+        endingsDebug = LoadEnds();
 
         this.enabled = false;
     }
 
     [SerializeField]
-    private Models.Situation[] result;
+    private Models.Situation[] situationsDebug;
+    [SerializeField]
+    private Models.EndDefinition[] endingsDebug;
 
     #endregion
 
 
-    #region STATES
+    #region SITUATIONS
 
     Models.Situation[] Load7Situations()
     {
@@ -107,10 +110,83 @@ public class Parser : MonoBehaviour {
         return output;
     }
 
+    #endregion
+
+
+    #region ENDINGS
+
+    Models.EndDefinition[] LoadEnds()
+    {
+        List<Models.EndDefinition> output = new List<Models.EndDefinition>();
+        XmlDocument xmlAll = new XmlDocument();
+        xmlAll.LoadXml(Resources.Load<TextAsset>("Ends").text);
+
+        foreach (XmlNode node in xmlAll.GetElementsByTagName("Ends")[0])
+        {
+            if (node.Name == "End")
+            {
+                output.Add(CreateEndDefinition(node));
+            }
+        }
+
+        return output.ToArray();
+    }
+
+    Models.EndDefinition CreateEndDefinition(XmlNode endDefNode)
+    {
+        Models.EndDefinition output = new Models.EndDefinition();
+        List<Models.Ministers> tempWinners = new List<Models.Ministers>();
+        output.text = endDefNode.InnerText.Trim();
+
+        foreach (XmlNode node in endDefNode.ChildNodes)
+        {
+            switch (node.Name)
+            {
+                case "Winner":
+                    tempWinners.Add(ToEnum<Models.Ministers>(node.Attributes["minister"].Value));
+                    break;
+
+                case "paramMinister1":
+                    output.paramMinister1 = CreateParameterVerification(node);
+                    break;
+                case "paramMinister2":
+                    output.paramMinister2 = CreateParameterVerification(node);
+                    break;
+                case "paramMinister3":
+                    output.paramMinister3 = CreateParameterVerification(node);
+                    break;
+                case "paramMinister4":
+                    output.paramMinister4 = CreateParameterVerification(node);
+                    break;
+
+                case "paramGovernment":
+                    output.paramGovernment = CreateParameterVerification(node);
+                    break;
+                case "paramConfidence":
+                    output.paramConfidence = CreateParameterVerification(node);
+                    break;
+            }
+        }
+        output.winners = tempWinners.ToArray();
+
+        return output;
+    }
+
+    Models.ParameterVerification CreateParameterVerification(XmlNode paramVerifNode)
+    {
+        Models.ParameterVerification output = new Models.ParameterVerification();
+        output.isRelevant = true;
+        output.isOverTargetValue = (paramVerifNode.Attributes["operation"].Value == "gt" ? true : false);
+        output.value = float.Parse(paramVerifNode.Attributes["value"].Value);
+
+        return output;
+    }
+
+    #endregion
+
+
     public T ToEnum<T>(this string value)
     {
         return (T)Enum.Parse(typeof(T), value, true);
     }
-
-    #endregion
 }

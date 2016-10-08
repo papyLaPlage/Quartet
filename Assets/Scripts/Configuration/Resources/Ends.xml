@@ -1,0 +1,17 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<Ends>
+
+  <End>
+    c'est la FIN
+    <Winner minister="Communication"/>
+
+    <paramMinister1 operation="gt" value="50"/>
+    <paramMinister2 operation="lt" value="50"/>
+    <paramMinister3 operation="gt" value="0"/>
+    <paramMinister4 operation="gt" value="0"/>
+
+    <paramGovernment operation="lt" value="50"/>
+    <paramConfidence operation="gt" value="3"/>
+  </End>
+    
+</Ends>
