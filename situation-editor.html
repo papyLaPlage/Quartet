@@ -1,0 +1,299 @@
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>Quartet : Situation Editor</title>
+    <style>
+      .block { display: block; }
+      .center { text-align: center; }
+      .dark { background-color: #203242; }
+      .red { background-color: #E25454; }
+      .gray { background-color: #ECF0F1; }
+      #container {
+        width: 60%;
+        margin: 0 auto;
+      }
+
+      body {
+        color: #ECF0F1;
+      }
+
+      textarea {
+        height: 200px;
+        width: 100%;
+        border: none;
+        font-family: Arial, sans-serif;
+        color: #203242;
+        padding: 5px;
+      }
+      hr { margin-top: 30px; }
+      h3 { margin-bottom: 50px;}
+
+      .form {
+        padding: 30px;
+      }
+
+      .answer-description {
+        height: 100px;
+        margin-bottom: 10px;
+      }
+
+      .situation {
+        margin: 50px 0;
+      }
+
+      .decision {
+        margin: 20px 0 60px 0;
+        padding: 10px;
+        padding-bottom: 30px;
+        border-bottom: solid 1px #ECF0F1;
+      }
+
+      #valid {
+        width: 100%;
+        height: 90px;
+        text-align: center;
+        margin-bottom: 30px;
+        border: none;
+        font-size: 2em;
+        background-color: #8AE36D;
+        color: #ECF0F1;
+      }
+
+    </style>
+  </head>
+  <body class="red">
+    <div id="container" class="red">
+      <h1>Editeur de Situation </h1>
+      <div id="editor-block" class="dark form">
+      </div>
+      <div id="result-block">
+        <textarea id="result"></textarea>
+      </div>
+    </div>
+
+    <!-- TEMPLATE ENGINE -->
+    <script>
+
+
+        // Simple JavaScript Templating
+        // John Resig - http://ejohn.org/ - MIT Licensed
+        (function(){
+          var cache = {};
+
+          this.tmpl = function tmpl(str, data){
+            // Figure out if we're getting a template, or if we need to
+            // load the template - and be sure to cache the result.
+            var fn = !/\W/.test(str) ?
+              cache[str] = cache[str] ||
+                tmpl(document.getElementById(str).innerHTML) :
+
+              // Generate a reusable function that will serve as a template
+              // generator (and which will be cached).
+              new Function("obj",
+                "var p=[],print=function(){p.push.apply(p,arguments);};" +
+
+                // Introduce the data as local variables using with(){}
+                "with(obj){p.push('" +
+
+                // Convert the template into pure JavaScript
+                str
+                  .replace(/[\r\t\n]/g, " ")
+                  .split("<%").join("\t")
+                  .replace(/((^|%>)[^\t]*)'/g, "$1\r")
+                  .replace(/\t=(.*?)%>/g, "',$1,'")
+                  .split("\t").join("');")
+                  .split("%>").join("p.push('")
+                  .split("\r").join("\\'")
+              + "');}return p.join('');");
+
+            // Provide some basic currying to the user
+            return data ? fn( data ) : fn;
+          };
+        })();
+
+
+
+    </script>
+
+    <script>
+
+
+      var ministers = ["Communication", "Security", "Foreign", "Financial"];
+      for (var i = 0; i < ministers.length ; i++) {
+        var minister = ministers[i];
+      }
+
+      function createForm() {
+
+        document.getElementById('editor-block').innerHTML = tmpl('form_tpl', {
+          ministers: ministers
+        });
+
+
+      }
+
+      function idGenerator(elements) {
+        return elements.join('_');
+      }
+
+      function generateXML() {
+        console.log("generate XML");
+        document.getElementById('result').value = tmpl('xml_tpl', {ministers: ministers});
+      }
+
+      function getEl(id) {
+        return document.getElementById(id);
+      }
+
+      window.onload = function() {
+        document.getElementById('result').value = '';
+        createForm();
+      };
+
+    </script>
+
+    <script id="form_tpl" type="text/html">
+      <% var i = 0; %>
+      <%= tmpl('situation_form_tpl', { situation: i, ministers: ministers }) %>
+      <button id="valid" onclick="generateXML()">Générer le XML</button>
+    </script>
+
+    <script id="xml_tpl" type="text/html">
+      <% var i = 0; %>
+      <%= tmpl('situation_xml_tpl', { situation: i, ministers: ministers }) %>
+    </script>
+
+    <script id="situation_form_tpl" type="text/html">
+      <div class="situation">
+        <% var descriptionId = idGenerator(["situation", situation, "description"]); %>
+        <!--<h2> J - <%= 7 - situation %> </h2>-->
+        <h2> Description </h2>
+        <!--<label class="block" for="<%= descriptionId %>">Description de la situation </label> -->
+        <textarea type="text" id="<%= descriptionId %>" placeholder="Description de la situation pour un jour donné"></textarea>
+
+        <hr>
+
+        <% for (var d = 0; d < ministers.length ; d++ ) { %>
+          <%= tmpl('decision_form_tpl', { ministers: ministers, situation: situation, decision: d }) %>
+        <% } %>
+      </div>
+    </script>
+
+    <script id="situation_xml_tpl" type="text/html">
+      <% var descriptionId = idGenerator(["situation", situation, "description"]); %>
+      <Situation>
+        <% for (var d = 0; d < ministers.length ; d++ ) { %>
+          <%= tmpl('decision_xml_tpl', { ministers: ministers, situation: situation, decision: d }) %>
+        <% } %>
+      </Situation>
+    </script>
+
+    <script id="decision_form_tpl" type="text/html">
+      <div class="decision">
+        <h3 class="center">Décision <%= decision + 1 %> </h3>
+        <% var decisionId = idGenerator(["decision", situation, decision]); %>
+        <% var selectMinisterId = idGenerator([decisionId, "minister"]); %>
+        <% var descriptionId = idGenerator([decisionId, "description"]); %>
+
+        <Label for="<%= selectMinisterId %>"> Concerne le ministre : </Label>
+        <%= tmpl( 'select_tpl', { options: ministers, selectId: selectMinisterId, selectedIndex: decision }) %>
+        <br>
+        <div class="decision_description">
+          <textarea id="<%= descriptionId %>" class="block" placeholder="Description de la décision à prendre"></textarea>
+        </div>
+        <div class="decision_answers">
+          <% for (var i = 0; i < 2; i++) { %>
+            <%= tmpl('answer_form_tpl', { ministers: ministers, situation: situation, decision: decision, answer: i } ) %>
+          <% } %>
+        </div>
+      </div>
+    </script>
+
+    <script id="decision_xml_tpl" type="text/html">
+
+        <% var decisionId = idGenerator(["decision", situation, decision]); %>
+        <% var selectMinisterId = idGenerator([decisionId, "minister"]); %>
+        <% var descriptionId = idGenerator([decisionId, "description"]); %>
+
+        <Decision minister="<%= getEl(selectMinisterId).value %>">
+          <%= getEl(descriptionId).value %>
+          <% for (var i = 0; i < 2; i++) { %>
+            <%= tmpl('answer_xml_tpl', { ministers: ministers, situation: situation, decision: decision, answer: i } ) %>
+          <% } %>
+
+        </Decision>
+    </script>
+
+    <script id="answer_form_tpl" type="text/html">
+
+      <% var answerId = idGenerator(['answer', situation, decision, answer]); %>
+      <% var answerDescriptionId = idGenerator([answerId, 'description']); %>
+      <% var answerMinisterId = idGenerator([answerId, 'minister']); %>
+      <% var answerParamBaseId = idGenerator([answerId, 'param']); %>
+      <% var paramValues = [3, 2, 2, 1]; %>
+
+      <h4>Réponse <%= answer + 1 %> </h4>
+      Favorise le ministre <%= tmpl('select_tpl', {options: ministers, selectId: answerMinisterId, selectedIndex: 0 }) %>
+      <textarea id="<%= answerDescriptionId %>"  class="answer-description" placeholder="Description de la réponse possible pour le ministre choisi"></textarea>
+
+      <% for (var i = 0; i < ministers.length; i++) { %>
+        <% var selectedP = i < 2 ? "selected=selected" : "" ; %>
+        <% var selectedN = i >= 2 ? "selected=selected" : "" ; %>
+        <% var paramMinisterId = idGenerator([ answerId, i, 'param']); %>
+        <% var paramOperationId = idGenerator([ answerId, i, 'operation']); %>
+        <% var paramValueId = idGenerator([ answerId, i, 'value']); %>
+        <div class="parameter">
+          Impacte le ministre <%= tmpl('select_tpl', { selectId: paramMinisterId, selectedIndex: i, options: ministers }) %>
+          <select id="<%= paramOperationId %>">
+            <option value="+" <%= selectedP %>> positivement </option>
+            <option value="-" <%= selectedN %>> négativement </option>
+          </select>
+          avec une valeur de
+          <input type="number" id="<%= paramValueId %>" value="<%= paramValues[i] %>"/>
+        </div>
+      <% } %>
+
+
+    </script>
+
+    <script id="answer_xml_tpl" type="text/html">
+
+      <% var answerId = idGenerator(['answer', situation, decision, answer]); %>
+      <% var answerDescriptionId = idGenerator([answerId, 'description']); %>
+      <% var answerMinisterId = idGenerator([answerId, 'minister']); %>
+      <% var answerParamBaseId = idGenerator([answerId, 'param']); %>
+      <% var paramValues = [3, 2, 2, 1]; %>
+
+      <Answer minister="<%= getEl(answerMinisterId).value %>">
+        <%= getEl(answerDescriptionId).value %>
+
+        <% for (var i = 0; i < ministers.length; i++) { %>
+        <% var selectedP = i < 2 ? "selected=selected" : "" ; %>
+        <% var selectedN = i >= 2 ? "selected=selected" : "" ; %>
+        <% var paramMinisterId = idGenerator([ answerId, i, 'param']); %>
+        <% var paramOperationId = idGenerator([ answerId, i, 'operation']); %>
+        <% var paramValueId = idGenerator([ answerId, i, 'value']); %>
+
+        <parameter minister="<%= getEl(paramMinisterId).value %>" operation="<%= getEl(paramOperationId).value %>" value="<%= getEl(paramValueId).value %>"/>
+
+      <% } %>
+      </Answer>
+
+    </script>
+
+
+    <script id="test_tpl" type="text/html">
+      Hello
+    </script>
+
+    <script id="select_tpl" type="text/html">
+      <select id="<%= selectId %>">
+      <% for (var i = 0; i < options.length; i++) { %>
+        <% var selected = i == selectedIndex ? 'selected=selected' : ''; %>
+        <option value="<%= options[i] %>" <%= selected %>><%= options[i] %></option>
+      <% } %>
+      </select>
+    </script>
+
+  </body>
+</html>
