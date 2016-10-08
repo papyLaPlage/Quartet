@@ -62,7 +62,8 @@ public class Parser : MonoBehaviour {
                 tempDecisions.Add(CreateDecision(node));
             }
         }
-        output.decisions = tempDecisions.ToArray();
+		Queue<Models.Decision> decisions = new Queue<Models.Decision>(tempDecisions.ToArray());
+		output.decisions = decisions;
         output.description = situationNode.InnerText.Trim();
 
         return output;

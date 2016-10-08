@@ -1,4 +1,6 @@
-﻿public class Models {
+﻿using System.Collections.Generic;
+
+public class Models {
 
 	public enum Ministers {
 		Communication,
@@ -13,7 +15,14 @@
     [System.Serializable]
 	public struct Situation {
 		public string description;
-		public Decision[] decisions;
+		public Queue<Models.Decision> decisions;
+		public Answer[] answerByMinister;
+
+		public Situation (string desc, Queue<Models.Decision> decis) {
+			description = desc;
+			decisions = decis;
+			answerByMinister = new Answer[System.Enum.GetNames(typeof(Models.Ministers)).Length];
+		}
 	}
 
 	[System.Serializable]
@@ -21,6 +30,14 @@
 		public string description;
 		public Ministers minister;
 		public Answer[] answers;
+		public int selectedAnswerIndex;
+
+		public Decision(string desc, Ministers min, Answer[] ans) {
+			description = desc;
+			minister = min;
+			answers = ans;
+			selectedAnswerIndex = -1;
+		}
 	}
 
 	[System.Serializable]
@@ -28,17 +45,24 @@
 		public string text;
 		public Ministers minister;
 		public Operation[] operations;
+
+		public Answer(string txt, Ministers min, Operation[] op) {
+			text = txt;
+			minister = min;
+			operations = op;
+		}
 	}
 
 	[System.Serializable]
 	public struct Operation {
-        public Operation(Ministers newMinister, int newValue)
-        {
-            minister = newMinister;
-            value = newValue;
-        }
 		public Ministers minister;
 		public int value;
+
+
+		public Operation(Ministers newMinister, int newValue) {
+			minister = newMinister;
+			value = newValue;
+		}
 	}
 
     #endregion
