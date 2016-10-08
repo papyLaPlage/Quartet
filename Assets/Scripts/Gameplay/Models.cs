@@ -24,14 +24,17 @@
 	public struct Answer {
 		public string text;
 		public Ministers minister;
-		public Operation[] operation;
+		public Operation[] operations;
 	}
 
 	[System.Serializable]
 	public struct Operation {
+        public Operation(Ministers newMinister, int newValue)
+        {
+            minister = newMinister;
+            value = newValue;
+        }
 		public Ministers minister;
 		public int value;
-		public string operation;
 	}
-
 }
