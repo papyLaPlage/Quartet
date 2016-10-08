@@ -2,21 +2,22 @@
 <Situations>
 
   <Situation>
-      <Decision minister="">
+    blablabla!
+      <Decision minister="Communication">
         blabla?
-        <Answer minister="">
+        <Answer minister="Security">
           blabla1
-          <parameter minister="" operation="" value=""/>
-          <parameter minister="" operation="" value=""/>
-          <parameter minister="" operation="" value=""/>
-          <parameter minister="" operation="" value=""/>
+          <parameter minister="Security" operation="+" value="10"/>
+          <parameter minister="Communication" operation="+" value="5"/>
+          <parameter minister="Financial" operation="-" value="4"/>
+          <parameter minister="Foreign" operation="-" value="8"/>
         </Answer>
-        <Answer minister="">
+        <Answer minister="Foreign">
           blabla2
-          <parameter minister="" operation="" value=""/>
-          <parameter minister="" operation="" value=""/>
-          <parameter minister="" operation="" value=""/>
-          <parameter minister="" operation="" value=""/>
+          <parameter minister="Foreign" operation="+" value="10"/>
+          <parameter minister="Financial" operation="+" value="5"/>
+          <parameter minister="Communication" operation="-" value="4"/>
+          <parameter minister="Security" operation="-" value="8"/>
         </Answer>
       </Decision>
   </Situation>

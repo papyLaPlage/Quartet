@@ -3,6 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using System.Xml;
 using System.IO;
+using System;
 
 public class Parser : MonoBehaviour {
 
@@ -43,6 +44,7 @@ public class Parser : MonoBehaviour {
 
     void CreateSituation(XmlNode situationNode)
     {
+        Debug.Log(situationNode.InnerText.Trim());
         foreach (XmlNode node in situationNode.ChildNodes)
         {
             if (node.Name == "Decision")
@@ -56,7 +58,7 @@ public class Parser : MonoBehaviour {
 
     void CreateDecision(XmlNode decisionNode)
     {
-        Debug.Log(decisionNode.Attributes["minister"].Value + " " + decisionNode.InnerText.Trim());
+        Debug.Log(ToEnum<Models.Ministers>(decisionNode.Attributes["minister"].Value) + " " + decisionNode.InnerText.Trim());
         foreach (XmlNode node in decisionNode.ChildNodes)
         {
             if (node.Name == "Answer")
@@ -70,16 +72,21 @@ public class Parser : MonoBehaviour {
 
     void CreateAnswer(XmlNode answerNode)
     {
-        Debug.Log(answerNode.Attributes["minister"].Value.Trim() + " " + answerNode.InnerText.Trim());
+        Debug.Log(ToEnum<Models.Ministers>(answerNode.Attributes["minister"].Value) + " " + answerNode.InnerText.Trim());
         foreach (XmlNode node in answerNode.ChildNodes)
         {
             if (node.Name == "parameter")
             {
-
+                Debug.Log(ToEnum<Models.Ministers>(node.Attributes["minister"].Value) + " " + int.Parse(node.Attributes["operation"].Value + node.Attributes["value"].Value));
             }
         }
 
         //return output;
+    }
+
+    public T ToEnum<T>(this string value)
+    {
+        return (T)Enum.Parse(typeof(T), value, true);
     }
 
     /*StateDefinition CreateState(XmlNode stateNode)
