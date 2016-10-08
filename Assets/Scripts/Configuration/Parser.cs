@@ -60,7 +60,7 @@ public class Parser : MonoBehaviour {
             }
         }
 		Queue<Models.Decision> decisions = new Queue<Models.Decision>(tempDecisions.ToArray());
-
+		output.decisions = decisions;
         output.description = situationNode.InnerText.Trim();
 
         return output;
