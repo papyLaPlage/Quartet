@@ -189,4 +189,66 @@ public class Parser : MonoBehaviour {
     {
         return (T)Enum.Parse(typeof(T), value, true);
     }
+
+
+    /*public void CheckEnds()
+    {
+        Debug.Log("CheckEnds");
+
+        foreach (Models.EndDefinition end in endingsDebug)
+        {
+            if (VerifyEndValidity(end))
+            {
+                //stop and use this end
+                break;  
+            }
+        }
+    }
+
+    bool VerifyEndValidity(Models.EndDefinition end)
+    {
+        //verify if winn
+
+        if (!VerifyParamaterValidity(end.paramMinister1))
+            return false;
+        if (!VerifyParamaterValidity(end.paramMinister2))
+            return false;
+        if (!VerifyParamaterValidity(end.paramMinister3))
+            return false;
+        if (!VerifyParamaterValidity(end.paramMinister4))
+            return false;
+
+        if (!VerifyParamaterValidity(end.paramGovernment))
+            return false;
+        if (!VerifyParamaterValidity(end.paramConfidence))
+            return false;
+
+        return true;
+    }
+
+    bool VerifyRankingValidity(Models.Ministers[] winners)
+    {
+        if (winners.Length <= 0)
+            return true;
+
+        for(short i = 0; i<winners.Length; i++)
+        {
+            if(winners[i] != //minister//)
+                return false;
+        }
+        return true;
+    }
+
+    bool VerifyParamaterValidity(Models.ParameterVerification param, float target)
+    {
+        if (param.isRelevant) {
+            if (param.isOverTargetValue) {
+                if (param.value < target)
+                    return false;
+                else if (param.value >= target)
+                    return false;
+            }
+        }
+        return true;
+    }*/
 }
