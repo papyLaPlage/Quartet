@@ -33,7 +33,7 @@ public class Parser : MonoBehaviour {
 
     #region SITUATIONS
 
-    Models.Situation[] Load7Situations()
+    public Models.Situation[] Load7Situations()
     {
         List<Models.Situation> output = new List<Models.Situation>();
         XmlDocument xmlAll = new XmlDocument();
@@ -116,7 +116,7 @@ public class Parser : MonoBehaviour {
 
     #region ENDINGS
 
-    Models.EndDefinition[] LoadEnds()
+    public Models.EndDefinition[] LoadEnds()
     {
         List<Models.EndDefinition> output = new List<Models.EndDefinition>();
         XmlDocument xmlAll = new XmlDocument();

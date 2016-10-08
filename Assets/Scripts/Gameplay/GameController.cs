@@ -6,7 +6,8 @@ public class GameController : MonoBehaviour {
 
 	public bool isMulti = false;
 
-	// Chaque Ministre a un paramètre interne et un paramètre "public" qu'il peut modifier
+	// Chaque Ministre a un paramètre interne et un paramètre "publique" qu'il peut modifier
+
 	public int paramMinister1;
 	public int paramMinister1Public;
 	public int paramMinister2;
@@ -49,11 +50,13 @@ public class GameController : MonoBehaviour {
 	#endregion
 
 	#region SITUATIONS
+
 	public void LoadGameSitutations() {
 		Debug.Log ("Load Game Situations");
-		// TODO : coder en dur situations ou importer depuis XML
+        foreach (Models.Situation situation in GetComponent<Parser>().Load7Situations())
+            situations.Enqueue(situation);
 
-		Models.Answer a1 = new Models.Answer ();
+		/*Models.Answer a1 = new Models.Answer ();
 		a1.text = "Intervenir sur le territoire national";
 		a1.minister = Models.Ministers.Foreign;
 
@@ -76,8 +79,7 @@ public class GameController : MonoBehaviour {
 			decisions
 		);
 
-		situations.Enqueue (s);
-
+		situations.Enqueue (s);*/
 	}
 
 //	public void LoadSituation() {
