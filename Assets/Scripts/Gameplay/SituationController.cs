@@ -12,8 +12,8 @@ public class SituationController : MonoBehaviour {
 	public RawImage[] gauges;
 	public GameController gameController;
 
-
-	// update the situation canvas with a given situation for a given minister
+	#region UI
+	// update the situation canvas with a given situation for a given minister (player)
 	public void ShowSituation(Models.Situation situation, Models.Ministers minister) {
 		// Situation image and description
 		this.situtationText.text = situation.description;
@@ -27,13 +27,16 @@ public class SituationController : MonoBehaviour {
 		this.answerButtonsText[0].text = ministerDecision.answers[0].text;
 		this.answerButtonsText[1].text = ministerDecision.answers[1].text;
 
-
+		Debug.Log ("Public Value for min 1 " + this.gameController.paramMinister1Public);
 
 		// Update Sliders
 		sliders[0].value = this.gameController.paramMinister1Public;
 		sliders[1].value = this.gameController.paramMinister2Public;
 		sliders[2].value = this.gameController.paramMinister3Public;
 		sliders[3].value = this.gameController.paramMinister4Public;
+
+		// Set current player Slider interactable
+		sliders [(int)minister].interactable = true;
 
 		// Update Gauges 
 		Vector2 v = new Vector2 (gauges [0].GetComponent<RectTransform> ().sizeDelta.x, this.gameController.paramMinister1Public);
@@ -47,6 +50,9 @@ public class SituationController : MonoBehaviour {
 
 	}
 
+	#endregion
+
+	#region UNITY
 	void Awake() {
 		this.gameController = this.GetComponentInParent<GameController> ();
 	}
@@ -60,4 +66,6 @@ public class SituationController : MonoBehaviour {
 	void Update () {
 
 	}
+
+	#endregion
 }
