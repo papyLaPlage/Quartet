@@ -27,8 +27,6 @@ public class SituationController : MonoBehaviour {
 		this.answerButtonsText[0].text = ministerDecision.answers[0].text;
 		this.answerButtonsText[1].text = ministerDecision.answers[1].text;
 
-		Debug.Log ("Public Value for min 1 " + this.gameController.paramMinister1Public);
-
 		// Update Sliders
 		sliders[0].value = this.gameController.paramMinister1Public;
 		sliders[1].value = this.gameController.paramMinister2Public;
@@ -48,6 +46,28 @@ public class SituationController : MonoBehaviour {
 		v.y = this.gameController.paramMinister4Public;
 		gauges[3].GetComponent<RectTransform>().sizeDelta = v;
 
+	}
+
+	public void disableUIElements() {
+		// Disable all sliders. Overkill but ... meh
+		for (int s = 0; s < this.sliders.Length; s++) {
+			this.sliders [s].interactable = false;
+		}
+
+		// Disable answers buttons
+		for (int b = 0; b < this.answerButtonsText.Length; b++ ) {
+			this.answerButtonsText [b].GetComponentInParent<Button> ().interactable = false;
+		}
+	}
+
+	#endregion
+
+
+	#region ACTIONS
+
+	public void OnAnswerClick(int answerIndex) {
+		this.disableUIElements ();
+		Debug.Log ("Player chose answer index " + answerIndex);
 	}
 
 	#endregion

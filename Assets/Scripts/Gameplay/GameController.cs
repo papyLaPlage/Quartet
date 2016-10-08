@@ -84,9 +84,11 @@ public class GameController : MonoBehaviour {
 		this.currentSituationIndex++;
 	}
 
+	public void ProcessSituationResults() {
+		
+	}
 
 	#endregion
-
 
 	#region UNITY
 
