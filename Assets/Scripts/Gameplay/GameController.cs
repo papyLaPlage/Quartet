@@ -165,6 +165,7 @@ public class GameController : NetworkBehaviour
 
 	public void Awake() {
         LoadGameSitutations();
+
     }
 
     void Start () {

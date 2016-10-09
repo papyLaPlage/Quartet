@@ -20,8 +20,8 @@ public class DecisionController : NetworkBehaviour {
 
     void Start()
     {
-        FindObjectOfType<GameUIManager>().OnClick += OnAnswerClick;
-        FindObjectOfType<GameUIManager>().OnSlide += OnSliderMoved;
+        FindObjectOfType<GameUIManager>().OnClickInt += OnAnswerClick;
+        //FindObjectOfType<GameUIManager>().OnSlideInt += OnSliderMoved;
     }
 
     #region UI
