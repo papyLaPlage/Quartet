@@ -153,7 +153,7 @@ public class MinisterController : NetworkBehaviour {
         /*if (isServer)
             roleAccepted = true;
         else*/
-            CmdAcceptRole();
+        CmdAcceptRole();
         
         GameUIManager GUIManager = FindObjectOfType<GameUIManager>();
         GUIManager.OnClickBool -= AcceptRole;
