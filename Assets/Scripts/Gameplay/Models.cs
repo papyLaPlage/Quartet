@@ -12,7 +12,11 @@ public class Models {
     public static Ministers IntToMinister(int value)
     {
         return (new Ministers[4] { Ministers.Communication, Ministers.Security, Ministers.Foreign, Ministers.Financial })[value];
-    } 
+    }
+    public static string IntToRoleText(int value)
+    {
+        return (new string[4] { " la communication", " la sécurité", " les affaires étrangères", " la finance" })[value];
+    }
 
 
     #region SITUATION
