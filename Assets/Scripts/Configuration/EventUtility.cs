@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using System.Xml;
 using System.IO;
 using System;
+using UnityEngine.SceneManagement;
 
 public class EventUtility : MonoBehaviour {
 
@@ -211,8 +212,15 @@ public class EventUtility : MonoBehaviour {
                 //stop and use this end
                 FindObjectOfType<GameUIManager>().testoText.text += end.text;
 
-                //TryInstantiate(end.imagePath, endImage);
+				// Prepare Global State with end params (text & win)
+				GlobalState gs = GameObject.FindObjectOfType<GlobalState> ();
+				GameController gc = FindObjectOfType<GameController> ();
+				gs.endText = end.text;
 
+				// Calculate Score. Win if >= 200
+				int totalScore = gc.paramMinister1 + gc.paramMinister2 + gc.paramMinister3 + gc.paramMinister4;
+				gs.gameWin = totalScore >= 200 ? true : false;
+				SceneManager.LoadScene ("End", LoadSceneMode.Single);
                 break;  
             }
         }
