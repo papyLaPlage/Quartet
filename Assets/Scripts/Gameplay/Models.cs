@@ -80,7 +80,9 @@ public class Models {
     {
         public string text;
 
-        public Ministers[] winners; // ministers in winning order (only the necessary one(s))
+        //public Ministers[] winners; // ministers in winning order (only the necessary one(s))
+
+        public ParameterVerification paramScore;
 
         public ParameterVerification paramMinister1;
         public ParameterVerification paramMinister2;

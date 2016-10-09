@@ -20,7 +20,7 @@ public class Parser : MonoBehaviour {
         situationsDebug = Load7Situations();
         endingsDebug = LoadEnds();
 
-        this.enabled = false;
+        //this.enabled = false;
     }
 
     [SerializeField]
@@ -137,15 +137,18 @@ public class Parser : MonoBehaviour {
     Models.EndDefinition CreateEndDefinition(XmlNode endDefNode)
     {
         Models.EndDefinition output = new Models.EndDefinition();
-        List<Models.Ministers> tempWinners = new List<Models.Ministers>();
+        //List<Models.Ministers> tempWinners = new List<Models.Ministers>();
         output.text = endDefNode.InnerText.Trim();
 
         foreach (XmlNode node in endDefNode.ChildNodes)
         {
             switch (node.Name)
             {
-                case "Winner":
+                /*case "Winner":
                     tempWinners.Add(ToEnum<Models.Ministers>(node.Attributes["minister"].Value));
+                    break;*/        
+                case "paramScore":
+                    output.paramScore = CreateParameterVerification(node);
                     break;
 
                 case "paramMinister1":
@@ -169,7 +172,7 @@ public class Parser : MonoBehaviour {
                     break;
             }
         }
-        output.winners = tempWinners.ToArray();
+        //output.winners = tempWinners.ToArray();
 
         return output;
     }
@@ -193,7 +196,7 @@ public class Parser : MonoBehaviour {
     }
 
 
-    /*public void CheckEnds()
+    public void CheckEnds()
     {
         Debug.Log("CheckEnds");
 
@@ -209,25 +212,29 @@ public class Parser : MonoBehaviour {
 
     bool VerifyEndValidity(Models.EndDefinition end)
     {
-        //verify if winn
+        GameController gameController = GetComponent<GameController>();
 
-        if (!VerifyParamaterValidity(end.paramMinister1))
-            return false;
-        if (!VerifyParamaterValidity(end.paramMinister2))
-            return false;
-        if (!VerifyParamaterValidity(end.paramMinister3))
-            return false;
-        if (!VerifyParamaterValidity(end.paramMinister4))
+        if (!VerifyParamaterValidity(end.paramScore, end.paramScore.value))
             return false;
 
-        if (!VerifyParamaterValidity(end.paramGovernment))
+        if (!VerifyParamaterValidity(end.paramMinister1, gameController.paramMinister1))
             return false;
-        if (!VerifyParamaterValidity(end.paramConfidence))
+        if (!VerifyParamaterValidity(end.paramMinister2, gameController.paramMinister2))
+            return false;
+        if (!VerifyParamaterValidity(end.paramMinister3, gameController.paramMinister3))
+            return false;
+        if (!VerifyParamaterValidity(end.paramMinister4, gameController.paramMinister4))
+            return false;
+
+        if (!VerifyParamaterValidity(end.paramGovernment, gameController.paramMinister1 + gameController.paramMinister2 + gameController.paramMinister3 + gameController.paramMinister4))
+            return false;
+        if (!VerifyParamaterValidity(end.paramConfidence, gameController.paramConfidence))
             return false;
 
         return true;
     }
 
+    /*private Models.Ministers winningMinister;
     bool VerifyRankingValidity(Models.Ministers[] winners)
     {
         if (winners.Length <= 0)
@@ -235,22 +242,22 @@ public class Parser : MonoBehaviour {
 
         for(short i = 0; i<winners.Length; i++)
         {
-            if(winners[i] != //minister//)
+            if( != //minister//)
                 return false;
         }
         return true;
-    }
+    }*/
 
-    bool VerifyParamaterValidity(Models.ParameterVerification param, float target)
+    bool VerifyParamaterValidity(Models.ParameterVerification param, float value)
     {
         if (param.isRelevant) {
             if (param.isOverTargetValue) {
-                if (param.value < target)
+                if (param.value >= value)
                     return false;
-                else if (param.value >= target)
+                else if (param.value < value)
                     return false;
             }
         }
         return true;
-    }*/
+    }
 }

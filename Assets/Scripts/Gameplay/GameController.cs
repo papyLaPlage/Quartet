@@ -46,7 +46,9 @@ public class GameController : NetworkBehaviour
     public float factorInstability;
     [SyncVar]
     public float paramConfidence;
-	public MinisterController[] players;
+    [SyncVar]
+    public float paramConfidenceLoss;
+    public MinisterController[] players;
 
     // Situations
     [SyncVar]
@@ -67,8 +69,10 @@ public class GameController : NetworkBehaviour
 	}
 
 	public void EndGame() {
-		// TODO : End Game Code 
-	}
+        FindObjectOfType<GameUIManager>().testoText.text += " End ";
+        // TODO : End Game Code
+        GetComponent<Parser>().CheckEnds();
+    }
 
 	#endregion
 
@@ -112,6 +116,12 @@ public class GameController : NetworkBehaviour
 
         foreach (MinisterController player in FindObjectsOfType<MinisterController>())
             player.SubmitChanges();
+
+        GameUIManager GUIManager = FindObjectOfType<GameUIManager>();
+        GUIManager.sliders[0].value = paramMinister1Public; 
+        GUIManager.sliders[1].value = paramMinister2Public; 
+        GUIManager.sliders[2].value = paramMinister3Public;
+        GUIManager.sliders[3].value = paramMinister4Public;
 
         PlayNextSituation();
 	}

@@ -21,6 +21,7 @@ public class DecisionController : NetworkBehaviour {
     void Start()
     {
         FindObjectOfType<GameUIManager>().OnClick += OnAnswerClick;
+        FindObjectOfType<GameUIManager>().OnSlide += OnSliderMoved;
     }
 
     #region UI
@@ -36,35 +37,70 @@ public class DecisionController : NetworkBehaviour {
 		// Get the minister from Decision object
 		Models.Ministers minister = decision.minister;
 
-        UIManager.situtationText.text = situation.description;
-        UIManager.decisionText.text = decision.description;
-        UIManager.answerButtonsText[0].text = decision.answers[0].text;
-        UIManager.answerButtonsText[1].text = decision.answers[1].text;
-
-        // Update Sliders
-        UIManager.sliders[0].value = this.gameController.paramMinister1Public;
-        UIManager.sliders[1].value = this.gameController.paramMinister2Public;
-        UIManager.sliders[2].value = this.gameController.paramMinister3Public;
-        UIManager.sliders[3].value = this.gameController.paramMinister4Public;
-
-		// Update Gauges 
-		Vector2 v = new Vector2 (UIManager.gauges [0].GetComponent<RectTransform> ().sizeDelta.x, this.gameController.paramMinister1Public);
-        UIManager.gauges[0].GetComponent<RectTransform>().sizeDelta = v;
-		v.y = this.gameController.paramMinister2Public;
-        UIManager.gauges[1].GetComponent<RectTransform>().sizeDelta = v;
-		v.y = this.gameController.paramMinister3Public;
-        UIManager.gauges[2].GetComponent<RectTransform>().sizeDelta = v;
-		v.y = this.gameController.paramMinister4Public;
-        UIManager.gauges[3].GetComponent<RectTransform>().sizeDelta = v;
-
-        foreach(MinisterController ministerController in FindObjectsOfType<MinisterController>())
+        foreach (MinisterController ministerController in FindObjectsOfType<MinisterController>())
         {
             if (ministerController.roles.Contains(minister) && ministerController.isLocalPlayer)
             {
                 ministerAnswering = ministerController;
                 EnableUIElements(minister);
-                return;
+                break;
             }
+        }
+
+        UIManager.situtationText.text = situation.description;
+        UIManager.decisionText.text = decision.description;
+        UIManager.answerButtonsText[0].text = decision.answers[0].text;
+        UIManager.answerButtonsText[1].text = decision.answers[1].text;
+
+        // Update Sliders & Gauges
+        Vector2 v = new Vector2(UIManager.gauges[0].GetComponent<RectTransform>().sizeDelta.x, this.gameController.paramMinister1Public);
+
+        if (ministerAnswering.roles.Contains((Models.Ministers)0))
+        {
+            //UIManager.sliders[0].value = this.gameController.paramMinister1;
+            v.y = this.gameController.paramMinister1;
+            UIManager.gauges[0].GetComponent<RectTransform>().sizeDelta = v;
+        }
+        else
+        {
+            UIManager.sliders[0].value = this.gameController.paramMinister1Public;
+            UIManager.gauges[0].GetComponent<RectTransform>().sizeDelta = v;
+        }
+        if (ministerAnswering.roles.Contains((Models.Ministers)1))
+        {
+            //UIManager.sliders[1].value = this.gameController.paramMinister2;
+            v.y = this.gameController.paramMinister2;
+            UIManager.gauges[1].GetComponent<RectTransform>().sizeDelta = v;
+        }
+        else
+        {
+            UIManager.sliders[1].value = this.gameController.paramMinister2Public;
+            v.y = this.gameController.paramMinister2Public;
+            UIManager.gauges[1].GetComponent<RectTransform>().sizeDelta = v;
+        }
+        if (ministerAnswering.roles.Contains((Models.Ministers)2))
+        {
+            //UIManager.sliders[2].value = this.gameController.paramMinister3;
+            v.y = this.gameController.paramMinister3;
+            UIManager.gauges[2].GetComponent<RectTransform>().sizeDelta = v;
+        }
+        else
+        {
+            UIManager.sliders[2].value = this.gameController.paramMinister3Public;
+            v.y = this.gameController.paramMinister3Public;
+            UIManager.gauges[2].GetComponent<RectTransform>().sizeDelta = v;
+        }
+        if (ministerAnswering.roles.Contains((Models.Ministers)3))
+        {
+            //UIManager.sliders[3]value = this.gameController.paramMinister4;
+            v.y = this.gameController.paramMinister4;
+            UIManager.gauges[3].GetComponent<RectTransform>().sizeDelta = v;
+        }
+        else
+        {
+            UIManager.sliders[3].value = this.gameController.paramMinister4Public;
+            v.y = this.gameController.paramMinister3Public;
+            UIManager.gauges[3].GetComponent<RectTransform>().sizeDelta = v;
         }
         //else if not the right localPlayer
 	}
@@ -97,7 +133,7 @@ public class DecisionController : NetworkBehaviour {
 
 	#region ACTIONS
 
-	public void OnAnswerClick(int answerIndex) {
+	void OnAnswerClick(int answerIndex) {
 		Debug.Log ("Player chose answer index " + answerIndex);
 		this.disableUIElements ();
 
@@ -134,6 +170,29 @@ public class DecisionController : NetworkBehaviour {
 
 		ministerAnswering.ResumeDay();
 	}
+
+    void OnSliderMoved(int gaugeIndex)
+    {
+        switch (gaugeIndex)
+        {
+            case 0:
+                ministerAnswering.CmdCheatParameter(gaugeIndex, (int)FindObjectOfType<GameUIManager>().sliders[gaugeIndex].value);
+                gameController.paramMinister1Public = (int)FindObjectOfType<GameUIManager>().sliders[gaugeIndex].value;
+                break;
+            case 1:
+                ministerAnswering.CmdCheatParameter(gaugeIndex, (int)FindObjectOfType<GameUIManager>().sliders[gaugeIndex].value);
+                gameController.paramMinister2Public = (int)FindObjectOfType<GameUIManager>().sliders[gaugeIndex].value;
+                break;
+            case 2:
+                ministerAnswering.CmdCheatParameter(gaugeIndex, (int)FindObjectOfType<GameUIManager>().sliders[gaugeIndex].value);
+                gameController.paramMinister3Public = (int)FindObjectOfType<GameUIManager>().sliders[gaugeIndex].value;
+                break;
+            case 3:
+                ministerAnswering.CmdCheatParameter(gaugeIndex, (int)FindObjectOfType<GameUIManager>().sliders[gaugeIndex].value);
+                gameController.paramMinister4Public = (int)FindObjectOfType<GameUIManager>().sliders[gaugeIndex].value;
+                break;
+        }
+    }
 
 	#endregion
 }

@@ -89,7 +89,6 @@ public class MinisterController : NetworkBehaviour {
     [Command]
     void CmdUpdateParameters(int modif1, int modif2, int modif3, int modif4, float modifConfidence)
     {
-        _gameController = FindObjectOfType<GameController>();
         _gameController.paramMinister1 = Mathf.Clamp(_gameController.paramMinister1 + modif1, 0, 100);
         _gameController.paramMinister2 = Mathf.Clamp(_gameController.paramMinister2 + modif2, 0, 100);
         _gameController.paramMinister3 = Mathf.Clamp(_gameController.paramMinister3 + modif3, 0, 100);
@@ -100,6 +99,26 @@ public class MinisterController : NetworkBehaviour {
         _gameController.paramMinister4Public = Mathf.Clamp(_gameController.paramMinister4Public + modif4, 0, 100);
 
         _gameController.paramConfidence = Mathf.Clamp(_gameController.paramConfidence + modifConfidence, 1, 50);
+    }
+
+    [Command]
+    public void CmdCheatParameter(int gaugeIndex, int value)
+    {
+        switch (gaugeIndex)
+        {
+            case 0:
+                _gameController.paramMinister1Public = value;
+                break;
+            case 1:
+                _gameController.paramMinister2Public = value;
+                break;
+            case 2:
+                _gameController.paramMinister3Public = value;
+                break;
+            case 3:
+                _gameController.paramMinister4Public = value;
+                break;
+        }
     }
 
     #endregion

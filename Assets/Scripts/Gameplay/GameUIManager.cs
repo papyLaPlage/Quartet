@@ -13,8 +13,9 @@ public class GameUIManager : MonoBehaviour {
 
     public Text testoText;
 
-    public delegate void ClickEvent(int value);
-    public ClickEvent OnClick;
+    public delegate void UIEvent(int value);
+    public UIEvent OnClick;
+    public UIEvent OnSlide;
 
     // Use this for initialization
     void Start () {
@@ -26,6 +27,14 @@ public class GameUIManager : MonoBehaviour {
         if (OnClick != null)
         {
             OnClick(value);
+        }
+    }
+
+    public void ExecuteOnSlide(int value)
+    {
+        if (OnSlide != null)
+        {
+            OnSlide(value);
         }
     }
 }
