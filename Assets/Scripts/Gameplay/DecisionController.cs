@@ -20,15 +20,14 @@ public class DecisionController : NetworkBehaviour {
 
     void Start()
     {
-        FindObjectOfType<GameUIManager>().OnClickInt += OnAnswerClick;
-        //FindObjectOfType<GameUIManager>().OnSlideInt += OnSliderMoved;
+        FindObjectOfType<GameUIManager>().OnSlideInt += OnSliderMoved;
     }
 
     #region UI
 
     GameUIManager UIManager;
 
-	public void UpdateDecisionScreen(Models.Situation situation, Models.Decision decision) {
+	public void UpdateDecisionScreen(Models.Situation situation, Models.Decision decision, bool firstPass) {
 
 		// Update controller Situation & Decision values
 		this.situation = situation;
@@ -42,8 +41,18 @@ public class DecisionController : NetworkBehaviour {
             if (ministerController.roles.Contains(minister) && ministerController.isLocalPlayer)
             {
                 ministerAnswering = ministerController;
-                EnableUIElements(minister);
-                StartCoroutine(Countdown());
+                if (firstPass)
+                {
+                    //extra focus on speaker (graph)
+                    StartCoroutine(CountdownIntro());
+                }
+                else
+                {
+                    EnableUIElements(minister);
+                    StartCoroutine(CountdownChoice());
+                }
+                UIManager.situationAcceptedButton.gameObject.SetActive(firstPass);
+
                 break;
             }
         }
@@ -60,7 +69,6 @@ public class DecisionController : NetworkBehaviour {
 
         if (ministerAnswering.roles.Contains((Models.Ministers)0))
         {
-            //UIManager.sliders[0].value = this.gameController.paramMinister1;
             v.y = this.gameController.paramMinister1;
             UIManager.gauges[0].GetComponent<RectTransform>().sizeDelta = v;
         }
@@ -71,7 +79,6 @@ public class DecisionController : NetworkBehaviour {
         }
         if (ministerAnswering.roles.Contains((Models.Ministers)1))
         {
-            //UIManager.sliders[1].value = this.gameController.paramMinister2;
             v.y = this.gameController.paramMinister2;
             UIManager.gauges[1].GetComponent<RectTransform>().sizeDelta = v;
         }
@@ -83,7 +90,6 @@ public class DecisionController : NetworkBehaviour {
         }
         if (ministerAnswering.roles.Contains((Models.Ministers)2))
         {
-            //UIManager.sliders[2].value = this.gameController.paramMinister3;
             v.y = this.gameController.paramMinister3;
             UIManager.gauges[2].GetComponent<RectTransform>().sizeDelta = v;
         }
@@ -95,7 +101,6 @@ public class DecisionController : NetworkBehaviour {
         }
         if (ministerAnswering.roles.Contains((Models.Ministers)3))
         {
-            //UIManager.sliders[3]value = this.gameController.paramMinister4;
             v.y = this.gameController.paramMinister4;
             UIManager.gauges[3].GetComponent<RectTransform>().sizeDelta = v;
         }
@@ -136,7 +141,7 @@ public class DecisionController : NetworkBehaviour {
 
 	#region ACTIONS
 
-	void OnAnswerClick(int answerIndex) {
+	public void OnAnswerClick(int answerIndex) {
         StopAllCoroutines();
 
 		Debug.Log ("Player chose answer index " + answerIndex);
@@ -199,10 +204,16 @@ public class DecisionController : NetworkBehaviour {
         }
     }
 
+    public void OnReadyClick()
+    {
+        StopAllCoroutines();
+        UpdateDecisionScreen(this.situation, this.decision, false);
+    }
+
     #endregion
 
     public float countdownDuration;
-    IEnumerator Countdown()
+    IEnumerator CountdownChoice()
     {
         float timer = countdownDuration;
         while (timer>0f)
@@ -212,5 +223,17 @@ public class DecisionController : NetworkBehaviour {
         }
 
         OnAnswerClick(Random.Range(0,1) > 0.5f ? 1 : 0);
+    }
+
+    IEnumerator CountdownIntro()
+    {
+        float timer = countdownDuration;
+        while (timer > 0f)
+        {
+            timer -= Time.deltaTime;
+            yield return null;
+        }
+
+        OnReadyClick();
     }
 }

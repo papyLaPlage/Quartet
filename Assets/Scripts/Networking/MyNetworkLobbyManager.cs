@@ -191,7 +191,7 @@ public class MyNetworkLobbyManager : NetworkLobbyManager {
         if (currentScene == playScene)
         {
             roomPanel.SetActive(false);
-            NetworkServer.SpawnObjects();
+            //NetworkServer.SpawnObjects();
         }
         else if(currentScene == lobbyScene)
         {

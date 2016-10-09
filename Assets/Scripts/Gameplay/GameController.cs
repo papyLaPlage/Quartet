@@ -87,7 +87,7 @@ public class GameController : NetworkBehaviour
         this.situations = new Queue<Models.Situation>();
         foreach (Models.Situation situation in GetComponent<EventUtility>().Load7Situations()) {
 			situations.Enqueue(situation);
-            situationsDebug.Add(situation);
+            //situationsDebug.Add(situation);
         }
 	}
 
@@ -151,7 +151,7 @@ public class GameController : NetworkBehaviour
         if (currentSituation.decisions.Count > 0)
         {
             Models.Decision decision = currentSituation.decisions.Dequeue();
-            GetComponentInParent<DecisionController>().UpdateDecisionScreen(currentSituation, decision);
+            GetComponentInParent<DecisionController>().UpdateDecisionScreen(currentSituation, decision, currentSituation.decisions.Count >= 3 ? true : false);
         }
         else
         {

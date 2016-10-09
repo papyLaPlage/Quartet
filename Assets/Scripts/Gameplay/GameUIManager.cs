@@ -12,10 +12,10 @@ public class GameUIManager : MonoBehaviour {
     public RawImage[] gauges;
 
     public Button roleAcceptedButton;
+    public Button situationAcceptedButton;
     public Text testoText;
 
     public delegate void IntEvent(int value);
-    public IntEvent OnClickInt;
     public IntEvent OnSlideInt;
 
     public delegate void BoolEvent(bool value);
@@ -25,14 +25,6 @@ public class GameUIManager : MonoBehaviour {
     void Start () {
 	
 	}
-
-    public void ExecuteOnClickInt(int value)
-    {
-        if (OnClickInt != null)
-        {
-            OnClickInt(value);
-        }
-    }
 
     public void ExecuteOnSlideInt(int value)
     {
