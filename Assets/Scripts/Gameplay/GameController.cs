@@ -1,42 +1,69 @@
 ﻿using UnityEngine;
 using System.Collections;
 using System.Collections.Generic;
+using System;
+using UnityEngine.Networking;
+using UnityEngine.UI;
 
-public class GameController : MonoBehaviour {
-
-	public bool isMulti = false;
-
+public class GameController : NetworkBehaviour
+{
 	// Chaque Ministre a un paramètre interne et un paramètre "publique" qu'il peut modifier
 
+    [SyncVar]
 	public int paramMinister1;
+    [SyncVar]
 	public int paramMinister1Public;
-	public int paramMinister2;
-	public int paramMinister2Public;
-	public int paramMinister3;
-	public int paramMinister3Public;
-	public int paramMinister4;
-	public int paramMinister4Public;
+    [SyncVar]
+    public int paramMinister2;
+    [SyncVar]
+    public int paramMinister2Public;
+    [SyncVar]
+    public int paramMinister3;
+    [SyncVar]
+    public int paramMinister3Public;
+    [SyncVar]
+    public int paramMinister4;
+    [SyncVar]
+    public int paramMinister4Public;
+
+    public int GetParamMinisterByEnum(Models.Ministers minister, bool trueParam)
+    {
+        switch (minister)
+        {
+            case Models.Ministers.Communication:
+                return trueParam ? paramMinister1 : paramMinister1Public;
+            case Models.Ministers.Security:
+                return trueParam ? paramMinister2 : paramMinister2Public;
+            case Models.Ministers.Foreign:
+                return trueParam ? paramMinister3 : paramMinister3Public;
+            case Models.Ministers.Financial:
+                return trueParam ? paramMinister4 : paramMinister4Public;
+        }
+        return 0;
+    }
 
 	public float factorCoop;
-	public float factorInstability1;
-	public float factorInstability2;
-	public float paramConfidence;
+    public float factorInstability;
+    [SyncVar]
+    public float paramConfidence;
 	public MinisterController[] players;
 
-	// Situations
-	public Queue<Models.Situation> situations;	
+    // Situations
+    [SyncVar]
+    public int daysLeft;
+    public Queue<Models.Situation> situations;
+    public List<Models.Situation> situationsDebug;
 
-	// Current Situtation
-	public int currentSituationIndex;
-	public Queue<Models.Ministers>  ministers;
-	public Models.Answer[] situationAnswers;
+    /*public Queue<Models.Ministers>  ministers;*/
+    public Models.Answer[] situationAnswers;
+
+    private Models.Situation currentSituation;
 
 	#region GAME 
 
 	public void StartGame() {
-		this.currentSituationIndex = 0;
-		this.LoadGameSitutations ();
-		this.PlayNextSituation ();
+        FindObjectOfType<GameUIManager>().testoText.text += " Start server ";
+        RpcPlayNextSituation ();
 	}
 
 	public void EndGame() {
@@ -49,100 +76,90 @@ public class GameController : MonoBehaviour {
 
 	public void LoadGameSitutations() {
 		Debug.Log ("Load Game Situations");
-		foreach (Models.Situation situation in GetComponent<Parser>().Load7Situations()) {
+        this.situations = new Queue<Models.Situation>();
+        foreach (Models.Situation situation in GetComponent<Parser>().Load7Situations()) {
 			situations.Enqueue(situation);
-		}
+            situationsDebug.Add(situation);
+        }
 	}
 
+    [Command]
+    public void CmdPlayNextSituation()
+    {
+        RpcPlayNextSituation();
+    }
+    [ClientRpc]
+	private void RpcPlayNextSituation() {
+        PlayNextSituation();
+    }
+    private void PlayNextSituation()
+    {
+        FindObjectOfType<GameUIManager>().testoText.text += " RpcPlayNextSituation ";
+        if (this.situations.Count > 0)
+        {
+            Debug.Log("Play Situation");
+            ProcessSituation(situations.Dequeue());
+        }
+        else
+        {
+            EndGame();
+        }
+    }
 
-	public void PlayNextSituation() {
-
-		if (this.situations.Count > 0 ) {
-			Debug.Log ("Play Situation");
-			this.ProcessSituation (this.situations.Dequeue ());
-		} else {
-			this.EndGame ();
-		}
-	}
-
-	// When all decisions have been played, we process the whole situation
+    // When all decisions have been played, we process the whole situation
 	public void EndSituation() {
-		// TODO : Process all answers
-		this.PlayNextSituation ();
+        // TODO : Process all answers
+
+        foreach (MinisterController player in FindObjectsOfType<MinisterController>())
+            player.SubmitChanges();
+
+        PlayNextSituation();
 	}
 
-	public void ProcessSituation(Models.Situation situation) {
-		if (this.isMulti) {
-			this.ProcessSituationMulti (situation);
-		} else {
-			this.ProcessSituationSolo (situation);
-		}
-	}
+    [ClientRpc]
+    public void RpcProcessSituation()
+    {
+        ProcessSituation();
+    }
 
-	public void ProcessSituationSolo(Models.Situation situation) {
-		// If decisions to play are remaining in the queue, we display one of them
-		if (situation.decisions.Count > 0) {
-			Models.Decision decision = situation.decisions.Dequeue();
-			this.GetComponentInParent<DecisionController>().UpdateDecisionScreen (situation, decision);
-		} else {
-			this.EndSituation ();
-		}
-	}
-
-	public void ProcessSituationAnswer(Models.Answer a) {
-		
-	}  
-
-	public void ProcessSituationMulti(Models.Situation situation) {
-		
-	}
-
-
-	public void ProcessAnswer() {
-
-	}
-
-
-	public void ProcessAnswerSolo() {
-		
-	}
-
-	public void ProcessAnswerMulti() {
-		
-	}
-
-	public bool HasAllAnswers() {
-		// TODO : implement this
-		return false;
-	}
+    private void ProcessSituation(Models.Situation situation) {
+        currentSituation = situation;
+        ProcessSituation();
+    }
+    private void ProcessSituation()
+    {
+        // If decisions to play are remaining in the queue, we display one of them
+        if (currentSituation.decisions.Count > 0)
+        {
+            Models.Decision decision = currentSituation.decisions.Dequeue();
+            GetComponentInParent<DecisionController>().UpdateDecisionScreen(currentSituation, decision);
+        }
+        else
+        {
+            EndSituation();
+        }
+    }
 
 	#endregion
 
 	#region UNITY
 
 	public void Awake() {
-		this.situations = new Queue<Models.Situation> ();
-		this.paramMinister1Public = 50;
-		this.paramMinister2Public = 50;
-		this.paramMinister3Public = 50;
-		this.paramMinister4Public = 50;
+        LoadGameSitutations();
+    }
 
-		this.ministers = new Queue<Models.Ministers> ();
-		this.ministers.Enqueue (Models.Ministers.Communication);
-		this.ministers.Enqueue (Models.Ministers.Foreign);
-		this.ministers.Enqueue (Models.Ministers.Security);
-		this.ministers.Enqueue (Models.Ministers.Financial);
+    void Start () {
+        if (isServer)
+        {
+            daysLeft = 7;
 
-		this.situations = new Queue<Models.Situation> ();
-	}
+            this.paramMinister1 = this.paramMinister1Public = 50;
+            this.paramMinister2 = this.paramMinister2Public = 50;
+            this.paramMinister3 = this.paramMinister3Public = 50;
+            this.paramMinister4 = this.paramMinister4Public = 50;
+            paramConfidence = 1;
+        }
+    }
 
-	public void Start () {
-		this.StartGame ();
-	}
-
-	public void Update () {
-	
-	}
-
-	#endregion
+    #endregion
 }

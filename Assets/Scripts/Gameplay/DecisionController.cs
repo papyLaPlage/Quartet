@@ -1,23 +1,31 @@
 ﻿using UnityEngine;
 using UnityEngine.UI;
 using System.Collections;
+using UnityEngine.Networking;
 
-public class DecisionController : MonoBehaviour {
-
-	public Image image;
-	public Text situtationText;
-	public Text decisionText;
-	public Text[] answerButtonsText;
-	public Slider[] sliders;
-	public RawImage[] gauges;
+public class DecisionController : NetworkBehaviour {
 
 	public GameController gameController;
 
 	public Models.Situation situation;
 	public Models.Decision decision;
 
+    private MinisterController ministerAnswering;
 
-	#region UI
+    void Awake()
+    {
+        this.gameController = this.GetComponent<GameController>();
+        UIManager = FindObjectOfType<GameUIManager>();
+    }
+
+    void Start()
+    {
+        FindObjectOfType<GameUIManager>().OnClick += OnAnswerClick;
+    }
+
+    #region UI
+
+    GameUIManager UIManager;
 
 	public void UpdateDecisionScreen(Models.Situation situation, Models.Decision decision) {
 
@@ -28,50 +36,59 @@ public class DecisionController : MonoBehaviour {
 		// Get the minister from Decision object
 		Models.Ministers minister = decision.minister;
 
-		this.situtationText.text = situation.description;
-		this.decisionText.text = decision.description;
-		this.answerButtonsText[0].text = decision.answers[0].text;
-		this.answerButtonsText[1].text = decision.answers[1].text;
+        UIManager.situtationText.text = situation.description;
+        UIManager.decisionText.text = decision.description;
+        UIManager.answerButtonsText[0].text = decision.answers[0].text;
+        UIManager.answerButtonsText[1].text = decision.answers[1].text;
 
-		// Update Sliders
-		sliders[0].value = this.gameController.paramMinister1Public;
-		sliders[1].value = this.gameController.paramMinister2Public;
-		sliders[2].value = this.gameController.paramMinister3Public;
-		sliders[3].value = this.gameController.paramMinister4Public;
+        // Update Sliders
+        UIManager.sliders[0].value = this.gameController.paramMinister1Public;
+        UIManager.sliders[1].value = this.gameController.paramMinister2Public;
+        UIManager.sliders[2].value = this.gameController.paramMinister3Public;
+        UIManager.sliders[3].value = this.gameController.paramMinister4Public;
 
 		// Update Gauges 
-		Vector2 v = new Vector2 (gauges [0].GetComponent<RectTransform> ().sizeDelta.x, this.gameController.paramMinister1Public);
-		gauges[0].GetComponent<RectTransform>().sizeDelta = v;
+		Vector2 v = new Vector2 (UIManager.gauges [0].GetComponent<RectTransform> ().sizeDelta.x, this.gameController.paramMinister1Public);
+        UIManager.gauges[0].GetComponent<RectTransform>().sizeDelta = v;
 		v.y = this.gameController.paramMinister2Public;
-		gauges[1].GetComponent<RectTransform>().sizeDelta = v;
+        UIManager.gauges[1].GetComponent<RectTransform>().sizeDelta = v;
 		v.y = this.gameController.paramMinister3Public;
-		gauges[2].GetComponent<RectTransform>().sizeDelta = v;
+        UIManager.gauges[2].GetComponent<RectTransform>().sizeDelta = v;
 		v.y = this.gameController.paramMinister4Public;
-		gauges[3].GetComponent<RectTransform>().sizeDelta = v;
+        UIManager.gauges[3].GetComponent<RectTransform>().sizeDelta = v;
 
-		this.enableUIElements (minister);
+        foreach(MinisterController ministerController in FindObjectsOfType<MinisterController>())
+        {
+            if (ministerController.roles.Contains(minister) && ministerController.isLocalPlayer)
+            {
+                ministerAnswering = ministerController;
+                EnableUIElements(minister);
+                return;
+            }
+        }
+        //else if not the right localPlayer
 	}
 
-	public void enableUIElements(Models.Ministers minister) {
+	public void EnableUIElements(Models.Ministers minister) {
 
-		// Set current player Slider interactable
-		sliders [(int)minister].interactable = true;
+        // Set current player Slider interactable
+        UIManager.sliders [(int)minister].interactable = true;
 
 		// Enable answers buttons
-		for (int b = 0; b < this.answerButtonsText.Length; b++ ) {
-			this.answerButtonsText [b].GetComponentInParent<Button> ().interactable = true;
+		for (int b = 0; b < UIManager.answerButtonsText.Length; b++ ) {
+            UIManager.answerButtonsText [b].GetComponentInParent<Button> ().interactable = true;
 		}
 	}
 
 	public void disableUIElements() {
 		// Disable all sliders. Overkill but ... meh
-		for (int s = 0; s < this.sliders.Length; s++) {
-			this.sliders [s].interactable = false;
+		for (int s = 0; s < UIManager.sliders.Length; s++) {
+            UIManager.sliders [s].interactable = false;
 		}
 
 		// Disable answers buttons
-		for (int b = 0; b < this.answerButtonsText.Length; b++ ) {
-			this.answerButtonsText [b].GetComponentInParent<Button> ().interactable = false;
+		for (int b = 0; b < UIManager.answerButtonsText.Length; b++ ) {
+            UIManager.answerButtonsText [b].GetComponentInParent<Button> ().interactable = false;
 		}
 	}
 
@@ -84,27 +101,38 @@ public class DecisionController : MonoBehaviour {
 		Debug.Log ("Player chose answer index " + answerIndex);
 		this.disableUIElements ();
 
-		// We store the selected answer in the situation object;
-		this.situation.answerByMinister [(int) this.decision.minister] = this.decision.answers [answerIndex];
-		Debug.Log (this.situation.answerByMinister [(int)this.decision.minister].text);
-		this.gameController.ProcessSituation (situation);
-	}
+        // We store the selected answer in the situation object;
 
-	#endregion
+        foreach(Models.Operation operation in decision.answers[answerIndex].operations)
+        {
+            switch (operation.minister)
+            {
+                case Models.Ministers.Communication:
+                    ministerAnswering.paramMinister1Influence += operation.value;
+                    break;
+                case Models.Ministers.Security:
+                    ministerAnswering.paramMinister2Influence += operation.value;
+                    break;
+                case Models.Ministers.Foreign:
+                    ministerAnswering.paramMinister3Influence += operation.value;
+                    break;
+                case Models.Ministers.Financial:
+                    ministerAnswering.paramMinister4Influence += operation.value;
+                    break;
+            }
+        }
 
-	#region UNITY
-	void Awake() {
-		this.gameController = this.GetComponentInParent<GameController> ();
-	}
+        //verify altruism
+        if(gameController.GetParamMinisterByEnum(decision.answers[answerIndex].minister, true) <= gameController.GetParamMinisterByEnum(decision.answers[answerIndex == 0 ? 0 : 1].minister, true))
+        {
+            ministerAnswering.paramConfidenceInfluence += gameController.factorCoop;
+        }
+        else
+        {
+            ministerAnswering.paramConfidenceInfluence -= gameController.factorInstability;
+        }
 
-	// Use this for initialization
-	void Start () {
-
-	}
-
-	// Update is called once per frame
-	void Update () {
-
+		ministerAnswering.ResumeDay();
 	}
 
 	#endregion

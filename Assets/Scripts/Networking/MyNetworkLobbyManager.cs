@@ -12,6 +12,7 @@ public class MyNetworkLobbyManager : NetworkLobbyManager {
     {
         _networkDiscovery = GetComponentInChildren<NetworkDiscovery>();
         Debug.Log(networkAddress + " - " + networkPort);
+        //ClientScene.RegisterPrefab(spawnPrefabs[0]);
     }
 
     #region BUTTONS
@@ -50,7 +51,7 @@ public class MyNetworkLobbyManager : NetworkLobbyManager {
 
     public void OnPlayerNumberSliderModified()
     {
-        minPlayers = maxConnections = (int)playerNumberSlider.value;
+        minPlayers = (int)playerNumberSlider.value;
         playerNumberText.text = minPlayers + " Joueurs";
     }
 
@@ -151,6 +152,7 @@ public class MyNetworkLobbyManager : NetworkLobbyManager {
     }
     public override void OnLobbyStopClient()
     {
+        Debug.Log("OnStopClient");
         SetLobbyGUIActive(false);
         base.OnLobbyStopClient();
     }
@@ -165,7 +167,16 @@ public class MyNetworkLobbyManager : NetworkLobbyManager {
     }
     public override void OnLobbyClientConnect(NetworkConnection conn)
     {
-        Debug.Log("OnLobbyClientConnect"); 
+        Debug.Log("OnLobbyClientConnect");
+    }
+
+    public override void OnLobbyClientExit()
+    {
+        Debug.Log("OnLobbyClientExit");
+    }
+    public override void OnLobbyClientDisconnect(NetworkConnection conn)
+    {
+        Debug.Log("OnLobbyClientDisconnect");
     }
 
     public override void OnLobbyServerPlayersReady()
@@ -180,14 +191,31 @@ public class MyNetworkLobbyManager : NetworkLobbyManager {
         if (currentScene == playScene)
         {
             roomPanel.SetActive(false);
+            NetworkServer.SpawnObjects();
         }
         else if(currentScene == lobbyScene)
         {
-
+            
         }
 
         base.OnLobbyClientSceneChanged(conn);
     }
+
+    /*public override void OnServerSceneChanged(string sceneName)
+    {
+        string currentScene = SceneManager.GetActiveScene().name;
+        if (currentScene == playScene)
+        {
+            GameObject gameManager = (GameObject)Instantiate(spawnPrefabs[0], Vector3.zero, Quaternion.identity); // server-side copy
+            NetworkServer.Spawn(gameManager); // send to clients; 
+        }
+        else if (currentScene == lobbyScene)
+        {
+
+        }
+
+        base.OnServerSceneChanged(sceneName);
+    }*/
 
     #endregion
 }

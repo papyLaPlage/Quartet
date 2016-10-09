@@ -2,12 +2,17 @@
 
 public class Models {
 
-	public enum Ministers {
-		Communication,
-		Security,
-		Foreign,
-		Financial
-	}
+    public enum Ministers {
+        Communication,
+        Security,
+        Foreign,
+        Financial
+    }
+
+    public static Ministers IntToMinister(int value)
+    {
+        return (new Ministers[4] { Ministers.Communication, Ministers.Security, Ministers.Foreign, Ministers.Financial })[value];
+    } 
 
 
     #region SITUATION

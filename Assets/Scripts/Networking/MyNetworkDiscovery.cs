@@ -13,7 +13,7 @@ public class MyNetworkDiscovery : NetworkDiscovery {
 
     public override void OnReceivedBroadcast(string fromAddress, string data)
     {
-        Debug.Log("Client discovery received broadcast " + data + " from " + fromAddress);
+        //Debug.Log("Client discovery received broadcast " + data + " from " + fromAddress);
 
         lobby = NetworkManager.singleton as NetworkLobbyManager;
         if (lobby.client == null)
