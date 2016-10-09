@@ -2,6 +2,7 @@
 using System.Collections;
 using UnityEngine.UI;
 using UnityEngine.SceneManagement;
+
 public class MenuController : MonoBehaviour {
 
 	public Button startButton;
