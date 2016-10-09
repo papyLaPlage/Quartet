@@ -2,6 +2,9 @@
 <Situations>
 
   <Situation>
+  Le dictateur Bechir el-Ahmad vient de mourir dans un attentat-suicide en pleine réunion de son gouvernement. Tous les hauts responsable de l’Assyria sont décimés.
+Les services de renseignements français indiquent que des milliers de combattants de l’Essor du Levant (EL) se précipitent vers la capitale pour s’emparer du pouvoir.
+Le Président doit répondre à cette crise impromptue.
     <Decision minister="Communication">L’heure est grave, le Président doit montrer au peuple français qu’il est aux
         commandes du pays. Que lui recommandez-vous ?
         <Answer minister="Foreign">Faire un discours sur les marches du palais présidentiel pour rassurer les Français
@@ -80,6 +83,8 @@
   </Situation>          
 
 	 <Situation>
+	 La Grande Rossivie vient d’annoncer qu’elle va tout faire pour empêcher l’EL de prendre le pouvoir en Assyria. 
+	 Les EAL sont opposés à toute intervention militaire étrangère qui, selon eux, ne fera qu’empirer la situation.
 	    <Decision minister="Financial">En tant que ministre des Finances, vous avez déjà imposé des sanctions économiques à
 	        la Grande Rossivie à propos de l’invasion de l’Urakie deux ans plus tôt. Le Président sollicite votre avis pour
 	        savoir si on peut étendre ces sanctions sans asphyxier la population rossivite.
@@ -164,6 +169,9 @@
 	</Situation>          
 
 	<Situation>
+	À huit heures du matin, une bombe a explosé dans le RER parisien. 
+	C’était l’heure de pointe. Il y a des dizaines de victimes. Moins d’une heure plus tard, l’EL a revendiqué l’attentat.
+	Le Président décide à son tour de frapper l’EL en Assyria.
 	    <Decision minister="Security">Le Président veut une intervention militaire visible. Il veut du «Shock and awe !».
 	        Que lui proposez-vous ?
 	        <Answer minister="Communication">On lance des salves de missiles de croisière. Ça fait de belles images
@@ -247,6 +255,9 @@
 	</Situation>          
 
 	<Situation>
+	En voulant bombarder une colonne de pick-ups de l’EL, les avions rossivites ont frappé par erreur un hôpital pour enfants victimes de la guerre. 
+	Ramon Alvarez, le secrétaire général de la SNUP (Société des Nations Unies pour la Paix) appelle à un cessez-le-feu immédiat de toutes les parties.
+
 	    <Decision minister="Foreign">Vous arrivez au siège de la SNUP. Vous ne pouvez pas couper à une conférence de presse
 	        improvisée.
 	        Que faites-vous ?
@@ -331,6 +342,8 @@
 	</Situation>          
 
 	<Situation>
+	Le premier ministre du petit ’État d’Irazel, voisin de l’Assyria, a revêtu sa tenue militaire et s’est rendu sur un terrain d’aviation où il a annoncé avoir mis en état d’alerte sa flotte de bombardiers nucléaires. 
+	En dévoilant ce secret de polichinelle et en avertissant qu’il est prêt à utiliser le feu atomique, il se moque de bouleverser l’équilibre mondial de la dissuasion.
 	    <Decision minister="Communication">Les médias accusent le Président de ne jamais avoir avoué publiquement qu’Irazel
 	        détenait l’arme nucléaire alors que les services de renseignements français le savent depuis longtemps,
 	        contribuant ainsi à entretenir un secret néfaste pour la paix mondiale.
@@ -375,14 +388,11 @@
 	            <parameter minister="Communication" operation="-" value="1"/>
 	        </Answer>
 	    </Decision>
-	    <Decision minister="Financial">Le cheikh du puissant Royaume de Raqqa vous envoie son ambassadeur. Il veut acquérir
-	        les missiles français de dernière génération qu’il vient d’entrevoir sur les bombardiers atomiques d’Irazel. Le
-	        ministre de la défense n’y voit pas d’objection car Raqqa est un partenaire militaire précieux. Mais vous avez
-	        devant vous les derniers sondages montrant le niveau considérable de détestation de Raqa dans l’opinion
-	        publique, de même que tous les rapports d’Amnesty International sur le royaume qui garniraient une bibliothèque
-	        entière.
-	        Prétextant une réunion urgente, vous envoyez votre directeur de cabinet accueillir l’ambassadeur avec la
-	        consigne suivante :
+	    <Decision minister="Financial">Le cheikh du Royaume de Raqqa vous envoie son ambassadeur. 
+	    Il veut acquérir les missiles français de dernière génération qu’il a vu à la TV sur les bombardiers d’Irazel. 
+	    Le ministre de la défense n’y voit pas d’objection car Raqqa est un partenaire militaire précieux. 
+	    Mais vous avez devant vous tous les rapports d’Amnesty ainsi que les sondages montrant le niveau considérable de détestation de Raqqa dans l’opinion publique.
+	     Vous envoyez votre directeur de cabinet accueillir l’ambassadeur avec la consigne suivante :
 	        <Answer minister="Communication">Dis à cet enturbané que tant qu’il n’autorisera pas les femmes à conduire et ne
 	            cessera pas les lapidations publiques, il peut se carrer nos missiles où je pense ! Bon, tu y mets les
 	            formes, hein ! Et tu balances l’information à un journaliste de gauche pour nous faire bien voir.
@@ -425,6 +435,9 @@
 	</Situation>          
 
 	<Situation>
+		Des réfugiés assyrians fuient leur pays en masse depuis plusieurs jours. 
+		Aujourd’hui, ils arrivent en Europe à pied, en camion, par bateau, et ils font la queue devant les consulats, notamment français, dans les pays voisins pour demander des visas. 
+		Toutes les chaînes télévisées diffusent ces images de misère qui serrent le coeur. 
 	    <Decision minister="Financial">Vous êtes en première ligne car le Président n’a cessé de répéter depuis plusieurs
 	        années que la France n’était pas assez riche pour accueillir tous les réfugiés du monde. L’argument économique a
 	        supplanté l’argument humanitaire. A deux jours de l’élection, il ne veut pas paraître insensible à l’émotion
@@ -447,13 +460,10 @@
 	            <parameter minister="Security" operation="-" value="1"/>
 	        </Answer>
 	    </Decision>
-	    <Decision minister="Foreign">Les consulats français sont pris d’assaut par des réfugiés aux situations toutes plus
-	        tragiques les unes que les autres. Vos diplomates sont d’avis qu’il faut agir humainement, mais les conseillers
-	        du président craignent le vote de l’extrême droite lors du scrutin et ne veulent pas relâcher la politique des
-	        visas. Vous avez un rendez-vous prévu de longue date avec Malek Teral, la grande figure humanitaire et
-	        médiatique. Vous ne pouvez évidemment pas blâmer le président, mais vous savez que l’explication que vous allez
-	        lui livrer filtrera dans les médias immédiatement.
-	        Comment justifiez-vous la décision de ne pas accueillir de réfugiés ?
+	    <Decision minister="Foreign">Vos diplomates sont d’avis qu’il faut agir humainement avec les réfugiés, mais les conseillers du président craignent le vote de l’extrême droite lors du scrutin et ne veulent pas relâcher la politique des visas. 
+	    Vous avez un rendez-vous avec Malek Teral, grande figure humanitaire et médiatique. 
+	    Vous ne pouvez pas blâmer le président, mais vous savez que l’explication que vous allez lui livrer filtrera dans les médias immédiatement. 
+	    Comment justifiez-vous la décision de ne pas accueillir de réfugiés ?
 	        <Answer minister="Financial">Le ministre des finances était d’accord pour débloquer des fonds pour l’accueil des
 	            réfugiés, mais les services de renseignements nous ont dit qu’il fallait nous méfier des terroristes
 	            infiltrés.
@@ -512,6 +522,10 @@
 	</Situation>          
 
 	<Situation>
+		Après les frappes, parfois indiscriminées, de la Grande Rossivie, l’avance des troupes de l’EL sur la capitale est bloquée net. 
+		Ramon Alvarez a décidé de saisir cette opportunité pour convoquer une réunion du Conseil spécial de la SNUP au niveau des chefs d’Etat. 
+		Il demande au Président d’intervenir pour proposer un plan de paix. 
+		C’est une occasion énorme de briller sur la scène internationale à un jour du scrutin présidentiel, mais c’est aussi un risque énorme.
 	    <Decision minister="Communication">Le Président vous appelle et vous fait part de la proposition de Ramon Alvarez.
 	        Que lui conseillez-vous ?
 	        <Answer minister="Foreign">Il faut toujours donner une chance à la paix. Allez-y !

@@ -182,6 +182,7 @@
     <script id="situation_xml_tpl" type="text/html">
       <% var descriptionId = idGenerator(["situation", situation, "description"]); %>
       <Situation>
+        <%= getEl(descriptionId).value %>
         <% for (var d = 0; d < ministers.length ; d++ ) { %>
           <%= tmpl('decision_xml_tpl', { ministers: ministers, situation: situation, decision: d }) %>
         <% } %>
