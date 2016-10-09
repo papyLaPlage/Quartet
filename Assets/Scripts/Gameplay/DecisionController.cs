@@ -43,6 +43,7 @@ public class DecisionController : NetworkBehaviour {
             {
                 ministerAnswering = ministerController;
                 EnableUIElements(minister);
+                StartCoroutine(Countdown());
                 break;
             }
         }
@@ -136,6 +137,8 @@ public class DecisionController : NetworkBehaviour {
 	#region ACTIONS
 
 	void OnAnswerClick(int answerIndex) {
+        StopAllCoroutines();
+
 		Debug.Log ("Player chose answer index " + answerIndex);
 		this.disableUIElements ();
 
@@ -196,5 +199,18 @@ public class DecisionController : NetworkBehaviour {
         }
     }
 
-	#endregion
+    #endregion
+
+    public float countdownDuration;
+    IEnumerator Countdown()
+    {
+        float timer = countdownDuration;
+        while (timer>0f)
+        {
+            timer -= Time.deltaTime;
+            yield return null;
+        }
+
+        OnAnswerClick(Random.Range(0,1) > 0.5f ? 1 : 0);
+    }
 }

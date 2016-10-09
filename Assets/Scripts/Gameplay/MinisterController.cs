@@ -93,11 +93,13 @@ public class MinisterController : NetworkBehaviour {
         if(modifConfidence < 0)
         {
             if (_gameController.paramConfidenceLoss == 0)
-                _gameController.paramConfidenceLoss -= _gameController.factorInstability1;
+                _gameController.paramConfidenceLoss = -_gameController.factorInstability1;
             else if (_gameController.paramConfidenceLoss == _gameController.factorInstability1)
-                _gameController.paramConfidenceLoss -= _gameController.factorInstability2;
+                _gameController.paramConfidenceLoss = -_gameController.factorInstability2;
+            else if (_gameController.paramConfidenceLoss == _gameController.factorInstability2)
+                _gameController.paramConfidenceLoss = -_gameController.factorInstability3;
             else
-                _gameController.paramConfidenceLoss -= _gameController.factorInstability3;
+                _gameController.paramConfidenceLoss = -_gameController.factorInstability4;
         }
         _gameController.paramConfidenceLoss += modifConfidence < 0 ? modifConfidence : 0;
     }

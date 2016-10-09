@@ -46,6 +46,7 @@ public class GameController : NetworkBehaviour
     public float factorInstability1;
     public float factorInstability2;
     public float factorInstability3;
+    public float factorInstability4;
 
     [SyncVar]
     public float paramConfidence;
