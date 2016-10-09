@@ -41,10 +41,12 @@ public class MinisterController : NetworkBehaviour {
     void RpcAssignRoles()
     {
         FindObjectOfType<GameUIManager>().testoText.text += " " + players.Length + " ";
+        UnityEngine.UI.Text buttonText = GameObject.Find("IKnowButton").GetComponentInChildren<UnityEngine.UI.Text>();
+        buttonText.text = "Je représente: ";
         short i = 0, j = 0;
         while (i < 4)
         {
-            AssignRoleToPlayer(players[j].gameObject, i);
+            AssignRoleToPlayer(players[j].gameObject, i, buttonText);
             i++;
             j++;
             if (j >= players.Length)
@@ -52,8 +54,9 @@ public class MinisterController : NetworkBehaviour {
         }
     }
 
-    void AssignRoleToPlayer(GameObject targetPlayer, int roleID)
+    void AssignRoleToPlayer(GameObject targetPlayer, int roleID, UnityEngine.UI.Text buttonText)
     {
+        buttonText.text += (buttonText.text.Length > 20 ? "," : " ") + Models.IntToRoleText(roleID);
         targetPlayer.GetComponent<MinisterController>().roles.Add(Models.IntToMinister(roleID));
     }
 
