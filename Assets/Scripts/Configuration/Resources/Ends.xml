@@ -2,7 +2,58 @@
 <Ends>
 
   <End>
-    c'est la FIN
+    Le Président est réélu !
+    Vous avez bien travaillé au sein du gouvernement.
+    Cerise sur le gâteau : vos efforts en faveur d’une solution diplomatique à la crise ont permis l’adoption d’un plan de paix pour l’Assyria. Cela sera encore long et difficile, mais vous avez contribué à dessiner une porte de sortie au conflit.
+
+    <Image path="Sprites/nomimage"/>
+
+    <ParamMinister3 operation="gt" value="50"/>
+
+    <ParamGovernment operation="gt" value="200"/>
+  </End>
+
+  <End>
+    Le Président est réélu !
+    Vous avez tiré votre épingle du jeu au sein du gouvernement tout en restant loyal au chef d’État.
+    Par contre, l’Assyria continue de brûler, déchirée par vos bombes, celles de la Grande Rossivie et les assauts de l’Essor du Levant.
+    
+    <Image path="Sprites/nomimage"/>
+
+    <ParamMinister3 operation="lt" value="50"/>
+
+    <ParamGovernment operation="gt" value="200"/>
+  </End>
+
+  <End>
+    Le Président a perdu l’élection !
+    Sa défaite est également la votre. Vous n’avez pas su inspirer la confiance de la population dans vos décisions.
+    Un bon point tout de même : votre défense d’une solution diplomatique à la crise assyriane a permis l’adoption d’un plan de paix qui laisse entrevoir une fin prochaine du conflit.
+    
+    <Image path="Sprites/nomimage"/>
+
+    <ParamMinister3 operation="gt" value="50"/>
+
+    <ParamGovernment operation="lt" value="200"/>
+  </End>
+
+  <End>
+    Le Président a perdu l’élection !
+    Vous n’avez pas su former un gouvernement solidaire et capable de surmonter les obstacles.
+    De plus, à cause de votre tendance à privilégier la force sur les solutions collectives, l’Assyria continue de se déchirer et ses populations d’être précipitées sur le chemin de l’exil.
+    
+    <Image path="Sprites/nomimage"/>
+
+    <ParamMinister3 operation="lt" value="50"/>
+
+    <ParamGovernment operation="lt" value="200"/>
+  </End>
+
+  <!--
+  <End>
+    Le Président a perdu l’élection !
+    Vous n’avez pas su former un gouvernement solidaire et capable de surmonter les obstacles.
+    De plus, à cause de votre tendance à privilégier la force sur les solutions collectives, l’Assyria continue de se déchirer et ses populations d’être précipitées sur le chemin de l’exil.
 
     <Image path="Sprites/nomimage"/>
 
@@ -14,5 +65,6 @@
     <ParamGovernment operation="gt" value="200"/>
     <ParamConfidence operation="gt" value="3"/>
   </End>
+  -->
     
 </Ends>

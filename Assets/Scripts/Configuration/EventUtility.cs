@@ -11,7 +11,7 @@ public class EventUtility : MonoBehaviour {
 
     void Awake()
     {
-        this.enabled = true;
+        //this.enabled = true;
     }
 
     void Start()
@@ -47,6 +47,7 @@ public class EventUtility : MonoBehaviour {
         }
 
         return output.ToArray();
+        //return new Models.Situation[0] { };
     }
 
     Models.Situation CreateSituation(XmlNode situationNode)
@@ -69,7 +70,7 @@ public class EventUtility : MonoBehaviour {
 		Queue<Models.Decision> decisions = new Queue<Models.Decision>(tempDecisions.ToArray());
 		output.decisions = decisions;
 		output.answerByMinister = new Models.Answer[System.Enum.GetNames(typeof(Models.Ministers)).Length];
-        output.description = situationNode.InnerText.Trim();
+        output.description = FormatText(situationNode.InnerText);
 
         return output;
     }
@@ -89,7 +90,7 @@ public class EventUtility : MonoBehaviour {
         }
         output.answers = tempAnswers.ToArray();
         output.minister = ToEnum<Models.Ministers>(decisionNode.Attributes["minister"].Value);
-        output.description = decisionNode.InnerText.Trim();
+        output.description = FormatText(decisionNode.InnerText);
 
         return output;
     }
@@ -111,7 +112,7 @@ public class EventUtility : MonoBehaviour {
         }
         output.operations = tempOperation.ToArray();
         output.minister = ToEnum<Models.Ministers>(answerNode.Attributes["minister"].Value);
-        output.text = answerNode.InnerText.Trim();
+        output.text = FormatText(answerNode.InnerText);
 
         return output;
     }
@@ -136,13 +137,14 @@ public class EventUtility : MonoBehaviour {
         }
 
         return output.ToArray();
+        //return new Models.EndDefinition[0] { };
     }
 
     Models.EndDefinition CreateEndDefinition(XmlNode endDefNode)
     {
         Models.EndDefinition output = new Models.EndDefinition();
         //List<Models.Ministers> tempWinners = new List<Models.Ministers>();
-        output.text = endDefNode.InnerText.Trim();
+        output.text = FormatText(endDefNode.InnerText);
 
         foreach (XmlNode node in endDefNode.ChildNodes)
         {
@@ -153,7 +155,7 @@ public class EventUtility : MonoBehaviour {
                     break;*/
 
                 case "Image":
-                    output.imagePath = node.Attributes["path"].Value;
+                    output.imagePath = node.Attributes["path"].Value.Trim();
                     break;    
                         
                 case "ParamScore":
@@ -207,7 +209,7 @@ public class EventUtility : MonoBehaviour {
             if (VerifyEndValidity(end))
             {
                 //stop and use this end
-                
+                FindObjectOfType<GameUIManager>().testoText.text += end.text;
 
                 //TryInstantiate(end.imagePath, endImage);
 
@@ -257,13 +259,21 @@ public class EventUtility : MonoBehaviour {
     bool VerifyParamaterValidity(Models.ParameterVerification param, float value)
     {
         if (param.isRelevant) {
-            if (param.isOverTargetValue) {
-                if (param.value >= value)
+            if (param.isOverTargetValue)
+            {
+                if (param.value > value)
+                {
+                    Debug.Log(param.value + " > " + value +" "+ param.isOverTargetValue);
                     return false;
-                else if (param.value < value)
-                    return false;
+                }
+            }
+            else if (param.value <= value)
+            {
+                Debug.Log(param.value + " <= " + value + " " + param.isOverTargetValue);
+                return false;
             }
         }
+        Debug.Log(param.value + " ? " + value + " " + param.isOverTargetValue);
         return true;
     }
 
@@ -286,6 +296,16 @@ public class EventUtility : MonoBehaviour {
     public T ToEnum<T>(this string value)
     {
         return (T)Enum.Parse(typeof(T), value, true);
+    }
+
+    public string FormatText(string text)
+    {
+        string output = text.Replace("\t", " ");
+        while (output.IndexOf("  ") > 0)
+        {
+            output = output.Replace("  ", " ");
+        }
+        return output;
     }
 
     #endregion
