@@ -5,6 +5,7 @@
     Attentat à Paris !
       <Decision minister="Communication">
         blabla?
+        <Image path="Sprites/Lolimage"/>
         <Answer minister="Security">
           blabla1
           <parameter minister="Security" operation="+" value="10"/>

@@ -20,12 +20,14 @@ public class Models {
     [System.Serializable]
 	public struct Situation {
 		public string description;
-		public Queue<Models.Decision> decisions;
+        public string imagePath;
+        public Queue<Models.Decision> decisions;
 		public Answer[] answerByMinister;
 
 		public Situation (string desc, Queue<Models.Decision> decis) {
 			description = desc;
-			decisions = decis;
+            imagePath = desc;
+            decisions = decis;
 			answerByMinister = new Answer[System.Enum.GetNames(typeof(Models.Ministers)).Length];
 		}
 	}
@@ -79,6 +81,7 @@ public class Models {
     public struct EndDefinition
     {
         public string text;
+        public string imagePath;
 
         //public Ministers[] winners; // ministers in winning order (only the necessary one(s))
 

@@ -71,7 +71,7 @@ public class GameController : NetworkBehaviour
 	public void EndGame() {
         FindObjectOfType<GameUIManager>().testoText.text += " End ";
         // TODO : End Game Code
-        GetComponent<Parser>().CheckEnds();
+        GetComponent<EventUtility>().CheckEnds();
     }
 
 	#endregion
@@ -81,7 +81,7 @@ public class GameController : NetworkBehaviour
 	public void LoadGameSitutations() {
 		Debug.Log ("Load Game Situations");
         this.situations = new Queue<Models.Situation>();
-        foreach (Models.Situation situation in GetComponent<Parser>().Load7Situations()) {
+        foreach (Models.Situation situation in GetComponent<EventUtility>().Load7Situations()) {
 			situations.Enqueue(situation);
             situationsDebug.Add(situation);
         }
@@ -122,6 +122,8 @@ public class GameController : NetworkBehaviour
         GUIManager.sliders[1].value = paramMinister2Public; 
         GUIManager.sliders[2].value = paramMinister3Public;
         GUIManager.sliders[3].value = paramMinister4Public;
+
+        daysLeft--;
 
         PlayNextSituation();
 	}

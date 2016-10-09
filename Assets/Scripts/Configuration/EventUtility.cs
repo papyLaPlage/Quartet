@@ -5,7 +5,7 @@ using System.Xml;
 using System.IO;
 using System;
 
-public class Parser : MonoBehaviour {
+public class EventUtility : MonoBehaviour {
 
     #region setup & PARSE
 
@@ -60,6 +60,10 @@ public class Parser : MonoBehaviour {
             if (node.Name == "Decision")
             {
                 tempDecisions.Add(CreateDecision(node));
+            }
+            else if (node.Name == "Image")
+            {
+                output.imagePath = node.Attributes["path"].Value.Trim();
             }
         }
 		Queue<Models.Decision> decisions = new Queue<Models.Decision>(tempDecisions.ToArray());
@@ -146,28 +150,33 @@ public class Parser : MonoBehaviour {
             {
                 /*case "Winner":
                     tempWinners.Add(ToEnum<Models.Ministers>(node.Attributes["minister"].Value));
-                    break;*/        
-                case "paramScore":
+                    break;*/
+
+                case "Image":
+                    output.imagePath = node.Attributes["path"].Value;
+                    break;    
+                        
+                case "ParamScore":
                     output.paramScore = CreateParameterVerification(node);
                     break;
 
-                case "paramMinister1":
+                case "ParamMinister1":
                     output.paramMinister1 = CreateParameterVerification(node);
                     break;
-                case "paramMinister2":
+                case "ParamMinister2":
                     output.paramMinister2 = CreateParameterVerification(node);
                     break;
-                case "paramMinister3":
+                case "ParamMinister3":
                     output.paramMinister3 = CreateParameterVerification(node);
                     break;
-                case "paramMinister4":
+                case "ParamMinister4":
                     output.paramMinister4 = CreateParameterVerification(node);
                     break;
 
-                case "paramGovernment":
+                case "ParamGovernment":
                     output.paramGovernment = CreateParameterVerification(node);
                     break;
-                case "paramConfidence":
+                case "ParamConfidence":
                     output.paramConfidence = CreateParameterVerification(node);
                     break;
             }
@@ -189,13 +198,6 @@ public class Parser : MonoBehaviour {
 
     #endregion
 
-
-    public T ToEnum<T>(this string value)
-    {
-        return (T)Enum.Parse(typeof(T), value, true);
-    }
-
-
     public void CheckEnds()
     {
         Debug.Log("CheckEnds");
@@ -205,6 +207,10 @@ public class Parser : MonoBehaviour {
             if (VerifyEndValidity(end))
             {
                 //stop and use this end
+                
+
+                //TryInstantiate(end.imagePath, endImage);
+
                 break;  
             }
         }
@@ -260,4 +266,27 @@ public class Parser : MonoBehaviour {
         }
         return true;
     }
+
+
+    #region UTILITY
+
+    public Func<string, SpriteRenderer, bool> TryInstantiate = (s, sr) => {
+        try
+        {
+            sr.sprite = Instantiate(Resources.Load<Sprite>(s));
+            return true;
+        }
+        catch
+        {
+            Debug.LogWarning("Failed to instantiate sprite " + s);
+            return false;
+        }
+    };
+
+    public T ToEnum<T>(this string value)
+    {
+        return (T)Enum.Parse(typeof(T), value, true);
+    }
+
+    #endregion
 }

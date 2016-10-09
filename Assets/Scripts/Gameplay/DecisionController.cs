@@ -52,6 +52,8 @@ public class DecisionController : NetworkBehaviour {
         UIManager.answerButtonsText[0].text = decision.answers[0].text;
         UIManager.answerButtonsText[1].text = decision.answers[1].text;
 
+        //GetComponent<EventUtility>().TryInstantiate(situation.imagePath, situationImage);
+
         // Update Sliders & Gauges
         Vector2 v = new Vector2(UIManager.gauges[0].GetComponent<RectTransform>().sizeDelta.x, this.gameController.paramMinister1Public);
 

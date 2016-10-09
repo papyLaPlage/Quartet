@@ -4,13 +4,15 @@
   <End>
     c'est la FIN
 
-    <paramMinister1 operation="gt" value="50"/>
-    <paramMinister2 operation="lt" value="50"/>
-    <paramMinister3 operation="gt" value="0"/>
-    <paramMinister4 operation="gt" value="0"/>
+    <Image path="Sprites/nomimage"/>
 
-    <paramGovernment operation="gt" value="200"/>
-    <paramConfidence operation="gt" value="3"/>
+    <ParamMinister1 operation="gt" value="50"/>
+    <ParamMinister2 operation="lt" value="50"/>
+    <ParamMinister3 operation="gt" value="0"/>
+    <ParamMinister4 operation="gt" value="0"/>
+
+    <ParamGovernment operation="gt" value="200"/>
+    <ParamConfidence operation="gt" value="3"/>
   </End>
     
 </Ends>
