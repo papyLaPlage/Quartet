@@ -11,30 +11,42 @@ public class GameUIManager : MonoBehaviour {
     public Slider[] sliders;
     public RawImage[] gauges;
 
+    public Button roleAcceptedButton;
     public Text testoText;
 
-    public delegate void UIEvent(int value);
-    public UIEvent OnClick;
-    public UIEvent OnSlide;
+    public delegate void IntEvent(int value);
+    public IntEvent OnClickInt;
+    public IntEvent OnSlideInt;
+
+    public delegate void BoolEvent(bool value);
+    public BoolEvent OnClickBool;
 
     // Use this for initialization
     void Start () {
 	
 	}
 
-    public void ExecuteOnClick(int value)
+    public void ExecuteOnClickInt(int value)
     {
-        if (OnClick != null)
+        if (OnClickInt != null)
         {
-            OnClick(value);
+            OnClickInt(value);
         }
     }
 
-    public void ExecuteOnSlide(int value)
+    public void ExecuteOnSlideInt(int value)
     {
-        if (OnSlide != null)
+        if (OnSlideInt != null)
         {
-            OnSlide(value);
+            OnSlideInt(value);
+        }
+    }
+
+    public void ExecuteOnClickBool(bool value)
+    {
+        if (OnClickBool != null)
+        {
+            OnClickBool(value);
         }
     }
 }

@@ -25,10 +25,11 @@ public class MinisterController : NetworkBehaviour {
                 break;
             yield return new WaitForSeconds(0.5f);
         }
-        if (isLocalPlayer && isServer)
+        if (isLocalPlayer)
         {
-            RpcAssignRoles();
-            _gameController.StartGame();
+            FindObjectOfType<GameUIManager>().OnClickBool += AcceptRole;
+            if (isServer)
+                RpcAssignRoles();              
         }
     }
 
@@ -142,6 +143,51 @@ public class MinisterController : NetworkBehaviour {
                 _gameController.paramMinister4Public = value;
                 break;
         }
+    }
+
+    [SyncVar(hook = "HookRoleAccepted")] // know if all players are ready to progress
+    public bool roleAccepted = false;
+
+    void AcceptRole(bool state)
+    {
+        /*if (isServer)
+            roleAccepted = true;
+        else*/
+            CmdAcceptRole();
+        
+        GameUIManager GUIManager = FindObjectOfType<GameUIManager>();
+        GUIManager.OnClickBool -= AcceptRole;
+        GUIManager.roleAcceptedButton.gameObject.SetActive(false);
+    }
+    [Command]
+    void CmdAcceptRole()
+    {
+        roleAccepted = true;
+    }
+
+    void HookRoleAccepted(bool value)
+    {
+        roleAccepted = value;
+        if (isLocalPlayer)
+        {
+            foreach(MinisterController player in FindObjectsOfType<MinisterController>())
+            {
+                Debug.Log((player != this) +" "+ !player.roleAccepted);
+                if (player != this && !player.roleAccepted)
+                    return;
+            }
+
+            /*if(isServer)
+                _gameController.StartGame();
+            else */
+                CmdHookRoleAccepted();
+        }
+    }
+
+    [Command]
+    void CmdHookRoleAccepted()
+    {
+        _gameController.StartGame();
     }
 
     #endregion
