@@ -79,26 +79,47 @@ public class MinisterController : NetworkBehaviour {
 
     public float paramConfidenceInfluence;
 
-    public void SubmitChanges()
+    public void SubmitConfidenceChanges()
     {
         if (isLocalPlayer)
-            CmdUpdateParameters(paramMinister1Influence, paramMinister2Influence, paramMinister3Influence, paramMinister4Influence, paramConfidenceInfluence);
-        paramMinister1Influence = paramMinister2Influence = paramMinister3Influence = paramMinister4Influence = (int)(paramConfidenceInfluence = 0f);
+            CmdUpdateConfidence(paramConfidenceInfluence);
+        paramConfidenceInfluence = 0f;
     }
 
     [Command]
-    void CmdUpdateParameters(int modif1, int modif2, int modif3, int modif4, float modifConfidence)
+    void CmdUpdateConfidence(float modifConfidence)
     {
-        _gameController.paramMinister1 = Mathf.Clamp(_gameController.paramMinister1 + modif1, 0, 100);
-        _gameController.paramMinister2 = Mathf.Clamp(_gameController.paramMinister2 + modif2, 0, 100);
-        _gameController.paramMinister3 = Mathf.Clamp(_gameController.paramMinister3 + modif3, 0, 100);
-        _gameController.paramMinister4 = Mathf.Clamp(_gameController.paramMinister4 + modif4, 0, 100);
-        _gameController.paramMinister1Public = Mathf.Clamp(_gameController.paramMinister1Public + modif1, 0, 100);
+        _gameController.paramConfidence = Mathf.Clamp(_gameController.paramConfidence + modifConfidence, 1, 50);
+        if(modifConfidence < 0)
+        {
+            if (_gameController.paramConfidenceLoss == 0)
+                _gameController.paramConfidenceLoss -= _gameController.factorInstability1;
+            else if (_gameController.paramConfidenceLoss == _gameController.factorInstability1)
+                _gameController.paramConfidenceLoss -= _gameController.factorInstability2;
+            else
+                _gameController.paramConfidenceLoss -= _gameController.factorInstability3;
+        }
+        _gameController.paramConfidenceLoss += modifConfidence < 0 ? modifConfidence : 0;
+    }
+
+    public void SubmitParamsChanges()
+    {
+        if (isLocalPlayer)
+            CmdUpdateParameters(paramMinister1Influence, paramMinister2Influence, paramMinister3Influence, paramMinister4Influence);
+        paramMinister1Influence = paramMinister2Influence = paramMinister3Influence = paramMinister4Influence = 0;
+    }
+
+    [Command]
+    void CmdUpdateParameters(int modif1, int modif2, int modif3, int modif4)
+    {
+        _gameController.paramMinister1 = Mathf.Clamp(_gameController.paramMinister1 + (int)(modif1 * (modif1 < 0 ? _gameController.paramConfidenceLoss : 1)), 0, 100);
+        _gameController.paramMinister2 = Mathf.Clamp(_gameController.paramMinister2 + (int)(modif2 * (modif2 < 0 ? _gameController.paramConfidenceLoss : 1)), 0, 100);
+        _gameController.paramMinister3 = Mathf.Clamp(_gameController.paramMinister3 + (int)(modif3 * (modif3 < 0 ? _gameController.paramConfidenceLoss : 1)), 0, 100);
+        _gameController.paramMinister4 = Mathf.Clamp(_gameController.paramMinister4 + (int)(modif4 * (modif4 < 0 ? _gameController.paramConfidenceLoss : 1)), 0, 100);
+        /*_gameController.paramMinister1Public = Mathf.Clamp(_gameController.paramMinister1Public + modif1, 0, 100);
         _gameController.paramMinister2Public = Mathf.Clamp(_gameController.paramMinister2Public + modif2, 0, 100);
         _gameController.paramMinister3Public = Mathf.Clamp(_gameController.paramMinister3Public + modif3, 0, 100);
-        _gameController.paramMinister4Public = Mathf.Clamp(_gameController.paramMinister4Public + modif4, 0, 100);
-
-        _gameController.paramConfidence = Mathf.Clamp(_gameController.paramConfidence + modifConfidence, 1, 50);
+        _gameController.paramMinister4Public = Mathf.Clamp(_gameController.paramMinister4Public + modif4, 0, 100); */
     }
 
     [Command]

@@ -167,7 +167,7 @@ public class DecisionController : NetworkBehaviour {
         }
         else
         {
-            ministerAnswering.paramConfidenceInfluence -= gameController.factorInstability;
+            ministerAnswering.paramConfidenceInfluence -= 1;
         }
 
 		ministerAnswering.ResumeDay();

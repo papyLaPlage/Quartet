@@ -42,8 +42,11 @@ public class GameController : NetworkBehaviour
         return 0;
     }
 
-	public float factorCoop;
-    public float factorInstability;
+    public float factorCoop;
+    public float factorInstability1;
+    public float factorInstability2;
+    public float factorInstability3;
+
     [SyncVar]
     public float paramConfidence;
     [SyncVar]
@@ -115,7 +118,9 @@ public class GameController : NetworkBehaviour
         // TODO : Process all answers
 
         foreach (MinisterController player in FindObjectsOfType<MinisterController>())
-            player.SubmitChanges();
+            player.SubmitConfidenceChanges();
+        foreach (MinisterController player in FindObjectsOfType<MinisterController>())
+            player.SubmitParamsChanges();
 
         GameUIManager GUIManager = FindObjectOfType<GameUIManager>();
         GUIManager.sliders[0].value = paramMinister1Public; 
@@ -124,6 +129,7 @@ public class GameController : NetworkBehaviour
         GUIManager.sliders[3].value = paramMinister4Public;
 
         daysLeft--;
+        paramConfidenceLoss = 0;
 
         PlayNextSituation();
 	}
