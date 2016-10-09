@@ -1,24 +1,24 @@
 ﻿using UnityEngine;
 using System.Collections;
 using UnityEngine.UI;
-
+using UnityEngine.SceneManagement;
 public class MenuController : MonoBehaviour {
 
 	public Button startButton;
 
 	public void OnStartButtonClick() {
 		Debug.Log ("Start Game");
-		// TODO : implement this 
+		SceneManager.LoadScene ("MatchMaking", LoadSceneMode.Single);
 	}
 
 	public void OnExitButtonClick() {
 		Debug.Log ("Exit Game");
-		// TODO : implement this
+		Application.Quit();
 	}
 
 	public void OnCreditsButtonClick() {
 		Debug.Log ("Show Credits");
-		// TODO : implement this
+
 	}
 
 	// Use this for initialization
