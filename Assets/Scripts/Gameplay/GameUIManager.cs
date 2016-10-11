@@ -5,14 +5,19 @@ using UnityEngine.UI;
 public class GameUIManager : MonoBehaviour {
 
     public Image image;
-    public Text situtationText;
     public Text decisionText;
     public Text[] answerButtonsText;
     public Slider[] sliders;
     public RawImage[] gauges;
 
     public Button roleAcceptedButton;
+
+    public GameObject situationPanel;
+    public Scrollbar situationScrollBar;
+    public Text situtationText;
+    public Button situationAknowledgedButton;
     public Button situationAcceptedButton;
+
     public Text testoText;
 
     public delegate void IntEvent(int value);

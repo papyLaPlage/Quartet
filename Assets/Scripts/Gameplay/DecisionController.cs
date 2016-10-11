@@ -29,18 +29,26 @@ public class DecisionController : NetworkBehaviour {
 
 	public void UpdateDecisionScreen(Models.Situation situation, Models.Decision decision, bool firstPass) {
 
-		// Update controller Situation & Decision values
-		this.situation = situation;
+        if (firstPass)
+        {
+            UIManager.situationPanel.SetActive(true);
+            UIManager.situationAknowledgedButton.gameObject.SetActive(true);
+            UIManager.situationScrollBar.value = 1;
+            UIManager.situtationText.text = situation.description;
+        }
+
+        // Update controller Situation & Decision values
+        this.situation = situation;
 		this.decision = decision;
 
 		// Get the minister from Decision object
 		Models.Ministers minister = decision.minister;
 
-        foreach (MinisterController ministerController in FindObjectsOfType<MinisterController>())
+        foreach (MinisterController player in FindObjectsOfType<MinisterController>())
         {
-            if (ministerController.roles.Contains(minister) && ministerController.isLocalPlayer)
+            if (player.roles.Contains(minister) && player.isLocalPlayer)
             {
-                ministerAnswering = ministerController;
+                ministerAnswering = player;
                 if (firstPass)
                 {
                     //extra focus on speaker (graph)
@@ -52,15 +60,17 @@ public class DecisionController : NetworkBehaviour {
                     StartCoroutine(CountdownChoice());
                 }
                 UIManager.situationAcceptedButton.gameObject.SetActive(firstPass);
+                UIManager.situationAknowledgedButton.gameObject.SetActive(!firstPass);
 
                 break;
             }
         }
 
-        UIManager.situtationText.text = situation.description;
         UIManager.decisionText.text = decision.description;
         UIManager.answerButtonsText[0].text = decision.answers[0].text;
         UIManager.answerButtonsText[1].text = decision.answers[1].text;
+
+        //UIManager.situationAknowledgedButton.gameObject.SetActive(true);
 
         //GetComponent<EventUtility>().TryInstantiate(situation.imagePath, situationImage);
 
@@ -208,6 +218,11 @@ public class DecisionController : NetworkBehaviour {
     {
         StopAllCoroutines();
         UpdateDecisionScreen(this.situation, this.decision, false);
+    }
+
+    public void OnHidePanelClick()
+    {
+        UIManager.situationPanel.SetActive(false);
     }
 
     #endregion

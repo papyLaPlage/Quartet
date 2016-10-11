@@ -9,12 +9,12 @@ public class EndController : MonoBehaviour {
 		Text endText = GameObject.Find ("End Text").GetComponent<Text>();
 
 		GameObject winText = GameObject.Find ("End Title Victory");
-		GameObject winImg = GameObject.Find ("End Image Victory");
+		GameObject winImg = GameObject.Find ("End Title Image Victory");
 
 		GameObject looseText = GameObject.Find ("End Title Defeat");
 		GameObject looseImg = GameObject.Find ("End Title Image Defeat");
 
-		endText.text = gs.endText;
+        endText.text = gs.endText;
 		bool win = gs.gameWin;
 
 		looseText.SetActive (!win);
