@@ -28,7 +28,8 @@ public class MyNetworkLobbyManager : NetworkLobbyManager {
     {
         StopClient();
         StopHost();
-        _networkDiscovery.StopBroadcast();  
+        _networkDiscovery.StopBroadcast();
+        connectionPanel.SetActive(true);  
     }
 
     public void OnStartDiscoveryClicked()

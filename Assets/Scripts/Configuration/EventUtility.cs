@@ -222,8 +222,8 @@ public class EventUtility : MonoBehaviour {
 				gs.gameWin = totalScore >= 200 ? true : false;
 
                 gs.showEnd = true;
-                //SceneManager.LoadScene ("End", LoadSceneMode.Single);
-                MyNetworkLobbyManager.singleton.GetComponent<MyNetworkLobbyManager>().OnDisconnectClicked();
+                SceneManager.LoadScene ("End", LoadSceneMode.Single);
+                //MyNetworkLobbyManager.singleton.GetComponent<MyNetworkLobbyManager>().OnDisconnectClicked();
                 break;  
             }
         }

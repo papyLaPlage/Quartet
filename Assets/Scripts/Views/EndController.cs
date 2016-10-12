@@ -12,6 +12,8 @@ public class EndController : MonoBehaviour {
     public GameObject looseText;
     public GameObject looseImg;
 
+    public bool keepShowing;
+
     // Use this for initialization
     void Start () {
 		GlobalState gs = GameObject.FindObjectOfType<GlobalState> ();
@@ -28,9 +30,15 @@ public class EndController : MonoBehaviour {
             winText.SetActive(win);
             winImg.SetActive(win);
 
-            gs.showEnd = false;
+            gs.showEnd = keepShowing;
         }
         else
             endCanvas.SetActive(false);
     }
-}
+
+    public void OnEndButtonClicked()
+    {
+        keepShowing = false;
+        MyNetworkLobbyManager.singleton.GetComponent<MyNetworkLobbyManager>().OnDisconnectClicked();
+    }
+}                                   

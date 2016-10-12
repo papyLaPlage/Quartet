@@ -83,6 +83,7 @@ Le Président doit répondre à cette crise impromptue.
     </Decision>
   </Situation>          
 
+  <!--
 	 <Situation>
 	 La Grande Rossivie vient d’annoncer qu’elle va tout faire pour empêcher l’EL de prendre le pouvoir en Assyria. 
 	 Les EAL sont opposés à toute intervention militaire étrangère qui, selon eux, ne fera qu’empirer la situation.
@@ -590,6 +591,7 @@ Le Président doit répondre à cette crise impromptue.
 	            <parameter minister="Communication" operation="-" value="1"/>
 	        </Answer>
 	    </Decision>
-	</Situation>          
+	</Situation>
+  -->
 
 </Situations>

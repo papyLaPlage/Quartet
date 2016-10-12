@@ -46,9 +46,9 @@ public class DecisionController : NetworkBehaviour {
 
         foreach (MinisterController player in FindObjectsOfType<MinisterController>())
         {
+            ministerAnswering = player;
             if (player.roles.Contains(minister) && player.isLocalPlayer)
             {
-                ministerAnswering = player;
                 if (firstPass)
                 {
                     //extra focus on speaker (graph)
