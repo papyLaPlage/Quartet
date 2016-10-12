@@ -116,7 +116,7 @@ public class MyNetworkLobbyManager : NetworkLobbyManager {
                         else
                         {
                             playerLobbyPanels[i].gameObject.SetActive(true);
-                            playerLobbyPanels[i].infos.text = lobbySlots[i].readyToBegin ? "ready" : "not ready";
+                            playerLobbyPanels[i].infos.text = lobbySlots[i].readyToBegin ? "prêt" : "en attente";
                             playerLobbyPanels[i].readyButton.gameObject.SetActive(lobbySlots[i].isLocalPlayer && !lobbySlots[i].readyToBegin);
                         }
                     }

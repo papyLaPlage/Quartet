@@ -3,29 +3,34 @@ using System.Collections;
 using UnityEngine.UI;
 public class EndController : MonoBehaviour {
 
-	// Use this for initialization
-	void Start () {
+    public GameObject endCanvas;
+
+    public Text endText;
+    public GameObject winText;
+    public GameObject winImg;
+
+    public GameObject looseText;
+    public GameObject looseImg;
+
+    // Use this for initialization
+    void Start () {
 		GlobalState gs = GameObject.FindObjectOfType<GlobalState> ();
-		Text endText = GameObject.Find ("End Text").GetComponent<Text>();
 
-		GameObject winText = GameObject.Find ("End Title Victory");
-		GameObject winImg = GameObject.Find ("End Title Image Victory");
+        if (gs != null && gs.showEnd)
+        {
+            endCanvas.SetActive(true);
 
-		GameObject looseText = GameObject.Find ("End Title Defeat");
-		GameObject looseImg = GameObject.Find ("End Title Image Defeat");
+            endText.text = gs.endText;
+            bool win = gs.gameWin;
 
-        endText.text = gs.endText;
-		bool win = gs.gameWin;
+            looseText.SetActive(!win);
+            looseImg.SetActive(!win);
+            winText.SetActive(win);
+            winImg.SetActive(win);
 
-		looseText.SetActive (!win);
-		looseImg.SetActive (!win);
-		winText.SetActive (win);
-		winImg.SetActive (win);
-
-	}
-	
-	// Update is called once per frame
-	void Update () {
-	
-	}
+            gs.showEnd = false;
+        }
+        else
+            endCanvas.SetActive(false);
+    }
 }

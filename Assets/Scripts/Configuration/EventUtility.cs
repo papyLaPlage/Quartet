@@ -220,7 +220,10 @@ public class EventUtility : MonoBehaviour {
 				// Calculate Score. Win if >= 200
 				int totalScore = gc.paramMinister1 + gc.paramMinister2 + gc.paramMinister3 + gc.paramMinister4;
 				gs.gameWin = totalScore >= 200 ? true : false;
-				SceneManager.LoadScene ("End", LoadSceneMode.Single);
+
+                gs.showEnd = true;
+                //SceneManager.LoadScene ("End", LoadSceneMode.Single);
+                MyNetworkLobbyManager.singleton.GetComponent<MyNetworkLobbyManager>().OnDisconnectClicked();
                 break;  
             }
         }
@@ -271,17 +274,17 @@ public class EventUtility : MonoBehaviour {
             {
                 if (param.value > value)
                 {
-                    Debug.Log(param.value + " > " + value +" "+ param.isOverTargetValue);
+                    //Debug.Log(param.value + " > " + value +" "+ param.isOverTargetValue);
                     return false;
                 }
             }
             else if (param.value <= value)
             {
-                Debug.Log(param.value + " <= " + value + " " + param.isOverTargetValue);
+                //Debug.Log(param.value + " <= " + value + " " + param.isOverTargetValue);
                 return false;
             }
         }
-        Debug.Log(param.value + " ? " + value + " " + param.isOverTargetValue);
+        //Debug.Log(param.value + " ? " + value + " " + param.isOverTargetValue);
         return true;
     }
 
