@@ -221,6 +221,21 @@ public class EventUtility : MonoBehaviour {
 				int totalScore = gc.paramMinister1 + gc.paramMinister2 + gc.paramMinister3 + gc.paramMinister4;
 				gs.gameWin = totalScore >= 200 ? true : false;
 
+                if (gs.gameWin)
+                {
+                    foreach (MinisterController player in FindObjectsOfType<MinisterController>())
+                    {
+                        if (!player.isLocalPlayer)
+                            continue;
+                        foreach (Models.Ministers minister in player.roles)
+                        {
+                            gs.personalWin = gc.GetWinByMinister(minister);
+                            if (gs.personalWin)
+                                break;
+                        }
+                    }
+                }
+
                 gs.showEnd = true;
                 SceneManager.LoadScene ("End", LoadSceneMode.Single);
                 //MyNetworkLobbyManager.singleton.GetComponent<MyNetworkLobbyManager>().OnDisconnectClicked();

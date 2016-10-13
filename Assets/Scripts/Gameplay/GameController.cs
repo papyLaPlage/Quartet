@@ -41,6 +41,21 @@ public class GameController : NetworkBehaviour
         }
         return 0;
     }
+    public bool GetWinByMinister(Models.Ministers minister)
+    {
+        switch (minister)
+        {
+            case Models.Ministers.Communication:
+                return paramMinister1 >= paramMinister2 && paramMinister1 >= paramMinister3 && paramMinister1 >= paramMinister4;
+            case Models.Ministers.Security:
+                return paramMinister2 >= paramMinister1 && paramMinister2 >= paramMinister3 && paramMinister2 >= paramMinister4;
+            case Models.Ministers.Foreign:
+                return paramMinister3 >= paramMinister1 && paramMinister3 >= paramMinister2 && paramMinister3 >= paramMinister4;
+            case Models.Ministers.Financial:
+                return paramMinister4 >= paramMinister1 && paramMinister4 >= paramMinister2 && paramMinister4 >= paramMinister3;
+        }
+        return false;
+    }
 
     public float factorCoop;
     public float factorInstability1;
@@ -102,7 +117,10 @@ public class GameController : NetworkBehaviour
     }
     private void PlayNextSituation()
     {
-        FindObjectOfType<GameUIManager>().testoText.text += " RpcPlayNextSituation ";
+        GameUIManager gum = FindObjectOfType<GameUIManager>();
+        gum.testoText.text += " RpcPlayNextSituation ";
+        gum.daysCount.text = "J -" + this.situations.Count;
+
         if (this.situations.Count > 0)
         {
             Debug.Log("Play Situation");

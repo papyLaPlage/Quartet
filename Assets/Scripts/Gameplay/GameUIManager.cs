@@ -18,6 +18,7 @@ public class GameUIManager : MonoBehaviour {
     public Button situationAknowledgedButton;
     public Button situationAcceptedButton;
 
+    public Text daysCount;
     public Text testoText;
 
     public delegate void IntEvent(int value);
