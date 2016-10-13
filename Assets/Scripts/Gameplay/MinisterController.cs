@@ -56,7 +56,7 @@ public class MinisterController : NetworkBehaviour {
 
     void AssignRoleToPlayer(GameObject targetPlayer, int roleID, UnityEngine.UI.Text buttonText)
     {
-        if(isLocalPlayer)
+        if(targetPlayer.GetComponent<NetworkIdentity>().isLocalPlayer)
             buttonText.text += (buttonText.text.Length > 20 ? "," : " ") + Models.IntToRoleText(roleID);
         targetPlayer.GetComponent<MinisterController>().roles.Add(Models.IntToMinister(roleID));
     }
