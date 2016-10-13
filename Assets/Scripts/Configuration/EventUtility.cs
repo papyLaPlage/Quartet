@@ -311,7 +311,7 @@ public class EventUtility : MonoBehaviour {
 
     public string FormatText(string text)
     {
-        string output = text.Replace("\t", " ");
+        string output = text.Trim();
         while (output.IndexOf("  ") > 0)
         {
             output = output.Replace("  ", " ");
