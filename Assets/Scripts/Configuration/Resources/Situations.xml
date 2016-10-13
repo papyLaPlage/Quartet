@@ -6,75 +6,73 @@
   Le dictateur Bechir el-Ahmad vient de mourir dans un attentat-suicide en pleine réunion de son gouvernement. Tous les hauts responsable de l’Assyria sont décimés.
 Les services de renseignements français indiquent que des milliers de combattants de l’Essor du Levant (EL) se précipitent vers la capitale pour s’emparer du pouvoir.
 Le Président doit répondre à cette crise impromptue.
-    <Decision minister="Communication">L’heure est grave, le Président doit montrer au peuple français qu’il est aux
-        commandes du pays. Que lui recommandez-vous ?
-        <Answer minister="Foreign">Faire un discours sur les marches du palais présidentiel pour rassurer les Français
-            et le reste du monde. La priorité sera donnée à la diplomatie.
+    <Decision minister="Communication">
+      L’heure est grave, le Président doit montrer au peuple français qu’il est aux commandes du pays. Que lui recommandez-vous ?
+        <Answer minister="Foreign">
+          Faire un discours sur les marches du palais présidentiel pour rassurer les Français et le reste du monde. La priorité sera donnée à la diplomatie.
             <parameter minister="Foreign" operation="+" value="3"/>
             <parameter minister="Communication" operation="+" value="2"/>
             <parameter minister="Security" operation="-" value="2"/>
             <parameter minister="Financial" operation="-" value="1"/>
         </Answer>
-        <Answer minister="Security">Convoquer un conseil de défense avec les hauts responsables militaires pour montrer
-            que toutes les options (y compris militaires) sont sur la table.
+        <Answer minister="Security">
+          Convoquer un conseil de défense avec les hauts responsables militaires pour montrer que toutes les options (y compris militaires) sont sur la table.
             <parameter minister="Security" operation="+" value="3"/>
             <parameter minister="Communication" operation="+" value="2"/>
             <parameter minister="Foreign" operation="-" value="2"/>
             <parameter minister="Financial" operation="-" value="1"/>
         </Answer>
     </Decision>
-    <Decision minister="Security">Le Président vous demande de lui préparer un plan d’attaque, au cas où, même s’il
-        n’est pas encore prêt à donner le feu vert. Quelle option lui proposez-vous ?
-        <Answer minister="Financial">Il faut frapper fort ! On envoie un porte-avion sur zone, deux escadrons de
-            chasseurs et toutes les unités d’appui nécessaires. Cela fera par ailleurs une bonne publicité à notre
-            industrie d’armement et nous engrangerons des contrats.
+    <Decision minister="Security">
+      Le Président vous demande de lui préparer un plan d’attaque, au cas où, même s’il n’est pas encore prêt à donner le feu vert. Quelle option lui proposez-vous ?
+        <Answer minister="Financial">
+          Il faut frapper fort ! On envoie un porte-avion sur zone, deux escadrons de chasseurs et toutes les unités d’appui nécessaires. Cela fera par ailleurs une bonne publicité à notre industrie d’armement et nous engrangerons des contrats.
             <parameter minister="Financial" operation="+" value="3"/>
             <parameter minister="Security" operation="+" value="2"/>
             <parameter minister="Foreign" operation="-" value="2"/>
             <parameter minister="Communication" operation="-" value="1"/>
         </Answer>
-        <Answer minister="Foreign">Rien ne vaut une bonne unité de forces spéciales pour saboter la colonne de l’EL et
-            semer le désordre dans leurs rangs tout en restant discret sur la scène internationale et en préservant les
-            apparences.
+        <Answer minister="Foreign">
+          Rien ne vaut une bonne unité de forces spéciales pour saboter la colonne de l’EL et semer le désordre dans leurs rangs tout en restant discret sur la scène internationale et en préservant les apparences.
             <parameter minister="Foreign" operation="+" value="3"/>
             <parameter minister="Security" operation="+" value="2"/>
             <parameter minister="Financial" operation="-" value="2"/>
             <parameter minister="Communication" operation="-" value="1"/>
         </Answer>
     </Decision>
-    <Decision minister="Foreign">Illitch Pourgov, le président de la Grande Rossivie, et Valérie Stanton, celle des
-        Etats Alliés de Louisiana (EAL), veulent tous deux parler au Président. La Grande Rossivie a été le meilleur
-        allié de Bechir el-Ahmad, elle est incontournable pour résoudre la crise. Les EAL sont nos partenaires depuis
-        plusieurs décennies. Si la France décide d’y aller militairement, il faut avoir son soutien.
+    <Decision minister="Foreign">
+      Illitch Pourgov, le président de la Grande Rossivie, et Valérie Stanton, celle des Etats Alliés de Louisiana (EAL), veulent tous deux parler au Président. La Grande Rossivie a été le meilleur allié de Bechir el-Ahmad, elle est incontournable pour résoudre la crise.
+      Les EAL sont nos partenaires depuis plusieurs décennies.
+        Si la France décide d’y aller militairement, il faut avoir son soutien.
         Qui le Président doit-il prendre au téléphone en premier, quitte à frustrer l’autre ?
-        <Answer minister="Financial">Valerie Stanton, dont nous avons besoin de l’appui financier.
+        <Answer minister="Financial">
+          Valerie Stanton, dont nous avons besoin de l’appui financier.
             <parameter minister="Financial" operation="+" value="3"/>
             <parameter minister="Foreign" operation="+" value="2"/>
             <parameter minister="Security" operation="-" value="2"/>
             <parameter minister="Communication" operation="-" value="1"/>
         </Answer>
-        <Answer minister="Communication">Illitch Pourgov, afin de montrer que nous discutons avec tout le monde.
+        <Answer minister="Communication">
+          Illitch Pourgov, afin de montrer que nous discutons avec tout le monde.
             <parameter minister="Communication" operation="+" value="3"/>
             <parameter minister="Foreign" operation="+" value="2"/>
             <parameter minister="Financial" operation="-" value="2"/>
             <parameter minister="Security" operation="-" value="1"/>
         </Answer>
     </Decision>
-    <Decision minister="Financial">Le Président vous appelle. Il anticipe que la crise actuelle va avoir un impact sur
-        la politique d’austérité qu’il a défendue auprès des Français. Il veut que vous alliez au JT ce soir pour faire
-        passer la pilule.
+    <Decision minister="Financial">
+      Le Président vous appelle. Il anticipe que la crise actuelle va avoir un impact sur la politique d’austérité qu’il a défendue auprès des Français.
+        Il veut que vous alliez au JT ce soir pour faire passer la pilule.
         Comment vous y prenez-vous ?
-        <Answer minister="Communication">Vous suivez la ligne de la communication du gouvernement afin de noyer le
-            poisson en expliquant que, grâce aux efforts des Français ces dernières années, les finances sont saines et
-            que ce genre d’événement n’aura pas d’impact sur le déficit.
+        <Answer minister="Communication">
+          Vous suivez la ligne de la communication du gouvernement afin de noyer le poisson en expliquant que, grâce aux efforts des Français ces dernières années, les finances sont saines et que ce genre d’événement n’aura pas d’impact sur le déficit.
             <parameter minister="Communication" operation="+" value="3"/>
             <parameter minister="Financial" operation="+" value="2"/>
             <parameter minister="Foreign" operation="-" value="2"/>
             <parameter minister="Security" operation="-" value="1"/>
         </Answer>
-        <Answer minister="Security">Vous prenez votre meilleur accent churchillien et vous expliquez que la France doit
-            parfois consentir à des sacrifices pour tenir son rang dans le monde en ayant une armée forte capable de
-            résoudre les crises.
+        <Answer minister="Security">
+          Vous prenez votre meilleur accent churchillien et vous expliquez que la France doit parfois consentir à des sacrifices pour tenir son rang dans le monde en ayant une armée forte capable de résoudre les crises.
             <parameter minister="Security" operation="+" value="3"/>
             <parameter minister="Financial" operation="+" value="2"/>
             <parameter minister="Foreign" operation="-" value="2"/>
@@ -83,85 +81,79 @@ Le Président doit répondre à cette crise impromptue.
     </Decision>
   </Situation>          
 
-  <!--
 	 <Situation>
 	 La Grande Rossivie vient d’annoncer qu’elle va tout faire pour empêcher l’EL de prendre le pouvoir en Assyria. 
 	 Les EAL sont opposés à toute intervention militaire étrangère qui, selon eux, ne fera qu’empirer la situation.
-	    <Decision minister="Financial">En tant que ministre des Finances, vous avez déjà imposé des sanctions économiques à
-	        la Grande Rossivie à propos de l’invasion de l’Urakie deux ans plus tôt. Le Président sollicite votre avis pour
-	        savoir si on peut étendre ces sanctions sans asphyxier la population rossivite.
+	    <Decision minister="Financial">
+        En tant que ministre des Finances, vous avez déjà imposé des sanctions économiques à la Grande Rossivie à propos de l’invasion de l’Urakie deux ans plus tôt. 
+        Le Président sollicite votre avis pour savoir si on peut étendre ces sanctions sans asphyxier la population rossivite.
 	        Que lui répondez-vous ?
-	        <Answer minister="Communication">Honnêtement, ça n’aura pas beaucoup d’influence, mais ça peut être un bon
-	            signal à envoyer à l’opinion publique qui est outrée par l’attitude belliqueuse de Pourgov.
+	        <Answer minister="Communication">
+            Honnêtement, ça n’aura pas beaucoup d’influence, mais ça peut être un bon signal à envoyer à l’opinion publique qui est outrée par l’attitude belliqueuse de Pourgov.
 	            <parameter minister="Communication" operation="+" value="3"/>
 	            <parameter minister="Financial" operation="+" value="2"/>
 	            <parameter minister="Foreign" operation="-" value="2"/>
 	            <parameter minister="Security" operation="-" value="1"/>
 	        </Answer>
-	        <Answer minister="Foreign">Les sanctions sont un instrument grossier qui vont à coup sûr braquer la Grande
-	            Rossivie et nous faire perdre les derniers contacts diplomatiques que nous avons avec elle
+	        <Answer minister="Foreign">
+            Les sanctions sont un instrument grossier qui vont à coup sûr braquer la Grande Rossivie et nous faire perdre les derniers contacts diplomatiques que nous avons avec elle
 	            <parameter minister="Foreign" operation="+" value="3"/>
 	            <parameter minister="Financial" operation="+" value="2"/>
 	            <parameter minister="Security" operation="-" value="2"/>
 	            <parameter minister="Communication" operation="-" value="1"/>
 	        </Answer>
 	    </Decision>
-	    <Decision minister="Foreign">Le Président vous met dans une situation intenable. Il n’a pas choisi entre la
-	        diplomatie ou la guerre et vous demande de maintenir l’équilibre entre Pourgov et Stanton. Vous êtes obligé de
-	        faire passer des messages discrets pour débloquer la situation.
+	    <Decision minister="Foreign">
+        Le Président vous met dans une situation intenable. Il n’a pas choisi entre la diplomatie ou la guerre et vous demande de maintenir l’équilibre entre Pourgov et Stanton.
+          Vous êtes obligé de faire passer des messages discrets pour débloquer la situation.
 	        Que faites-vous ?
-	        <Answer minister="Security">Vous appelez votre homologue rossivite pour lui proposer un partage des
-	            renseignements militaires sur l’EL. C’est quelque chose que vos collègues de la Défense attendent depuis
-	            longtemps.
+	        <Answer minister="Security">
+            Vous appelez votre homologue rossivite pour lui proposer un partage des renseignements militaires sur l’EL. C’est quelque chose que vos collègues de la Défense attendent depuis longtemps.
 	            <parameter minister="Security" operation="+" value="3"/>
 	            <parameter minister="Foreign" operation="+" value="2"/>
 	            <parameter minister="Financial" operation="-" value="2"/>
 	            <parameter minister="Communication" operation="-" value="1"/>
 	        </Answer>
-	        <Answer minister="Financial">Vous contactez votre homologue de Louisiana pour explorer avec lui la possibilité
-	            de geler les sanctions contre la Grande Rossivie en gage de bonne volonté (et aussi pour soulager votre
-	            économie viticole qui souffre de ces sanctions)
+	        <Answer minister="Financial">
+            Vous contactez votre homologue de Louisiana pour explorer avec lui la possibilité de geler les sanctions contre la Grande Rossivie en gage de bonne volonté (et aussi pour soulager votre économie viticole qui souffre de ces sanctions)
 	            <parameter minister="Financial" operation="+" value="3"/>
 	            <parameter minister="Foreign" operation="+" value="2"/>
 	            <parameter minister="Security" operation="-" value="2"/>
 	            <parameter minister="Communication" operation="-" value="1"/>
 	        </Answer>
 	    </Decision>
-	    <Decision minister="Security">Le Président ne sait toujours pas sur quel pied danser, mais une opération militaire,
-	        ça se ne se prépare pas au dernier moment. Vous donnez les ordres de prépositionnement des différentes unités de
-	        soutien. Mais de tels mouvement de troupes passent difficilement inaperçus. Quelle stratégie de communication
-	        adoptez-vous ?
-	        <Answer minister="Communication">Vous convoquez des journalistes spécialisés dans les questions de défense que
-	            le ministre de la communication a identifié comme étant réceptifs à vos arguments pour leur expliquer les
-	            préparatifs et obtenir une couvertur positive dans la presse.
+	    <Decision minister="Security">
+        Le Président ne sait toujours pas sur quel pied danser, mais une opération militaire, ça se ne se prépare pas au dernier moment. Vous donnez les ordres de prépositionnement des différentes unités de soutien.
+          Mais de tels mouvement de troupes passent difficilement inaperçus. Quelle stratégie de communication adoptez-vous ?
+	        <Answer minister="Communication">
+            Vous convoquez des journalistes spécialisés dans les questions de défense que le ministre de la communication a identifié comme étant réceptifs à vos arguments pour leur expliquer les préparatifs et obtenir une couvertur positive dans la presse.
 	            <parameter minister="Communication" operation="+" value="3"/>
 	            <parameter minister="Security" operation="+" value="2"/>
 	            <parameter minister="Foreign" operation="-" value="2"/>
 	            <parameter minister="Financial" operation="-" value="1"/>
 	        </Answer>
-	        <Answer minister="Communication">Vous publiez un communiqué de presse indiquant que la priorité est toujours à
-	            la diplomatie et que ces mouvements de troupes sont des exercices ordinaires dans un contexte de crise.
+	        <Answer minister="Communication">
+            Vous publiez un communiqué de presse indiquant que la priorité est toujours à la diplomatie et que ces mouvements de troupes sont des exercices ordinaires dans un contexte de crise.
 	            <parameter minister="Communication" operation="+" value="3"/>
 	            <parameter minister="Security" operation="+" value="2"/>
 	            <parameter minister="Financial" operation="-" value="2"/>
 	            <parameter minister="Foreign" operation="-" value="1"/>
 	        </Answer>
 	    </Decision>
-	    <Decision minister="Communication">Alors que vous vous apprêtez à quitter le studio de radio après une interview
-	        réussie, le présentateur vous annonce qu’Illitch Pourgov vient de déclarer qu’il allait «buter ces cancrelats de
-	        l’EL en les bombardant jusque dans leurs sacs de tentes pouilleuses ! ». Les ONG ont déjà publié des communiqués
-	        s’alarmant d’un tel discours martial. Elles demandent que des sanctions soient prises contre la Grande Rossivie.
+	    <Decision minister="Communication">
+        Alors que vous vous apprêtez à quitter le studio de radio après une interview réussie, le présentateur vous annonce qu’Illitch Pourgov vient de déclarer qu’il allait «buter ces cancrelats de l’EL en les bombardant jusque dans leurs sacs de tentes pouilleuses ! ».
+          Les ONG ont déjà publié des communiqués s’alarmant d’un tel discours martial. Elles demandent que des sanctions soient prises contre la Grande Rossivie.
 	        Que répondez-vous ?
-	        <Answer minister="Financial">Vous expliquez calmement que les sanctions économiques sont malheureusement assez
-	            peu efficaces (et qu’elles heurtent notre économie).
+	        <Answer minister="Financial">
+            Vous expliquez calmement que les sanctions économiques sont malheureusement assez peu efficaces (et qu’elles heurtent notre économie).
 	            <parameter minister="Financial" operation="+" value="3"/>
 	            <parameter minister="Communication" operation="+" value="2"/>
 	            <parameter minister="Foreign" operation="-" value="2"/>
 	            <parameter minister="Security" operation="-" value="1"/>
 	        </Answer>
-	        <Answer minister="Security">Vous dénoncez ce genre de propos, mais vous expliquez que, maintenant que la Grande
-	            Rossivie intervient militairement, c’est une donnée à prendre en considération, même si elle ne nous plait
-	            pas. L’escalade des mots ne servira personne si la France doit envoyer des soldats sur place.
+	        <Answer minister="Security">
+            Vous dénoncez ce genre de propos, mais vous expliquez que, maintenant que la Grande Rossivie intervient militairement, c’est une donnée à prendre en considération, même si elle ne nous plait pas.
+              L’escalade des mots ne servira personne si la France doit envoyer des soldats sur place.
 	            <parameter minister="Security" operation="+" value="3"/>
 	            <parameter minister="Communication" operation="+" value="2"/>
 	            <parameter minister="Foreign" operation="-" value="2"/>
@@ -174,80 +166,73 @@ Le Président doit répondre à cette crise impromptue.
 	À huit heures du matin, une bombe a explosé dans le RER parisien. 
 	C’était l’heure de pointe. Il y a des dizaines de victimes. Moins d’une heure plus tard, l’EL a revendiqué l’attentat.
 	Le Président décide à son tour de frapper l’EL en Assyria.
-	    <Decision minister="Security">Le Président veut une intervention militaire visible. Il veut du «Shock and awe !».
+	    <Decision minister="Security">
+        Le Président veut une intervention militaire visible. Il veut du «Shock and awe !».
 	        Que lui proposez-vous ?
-	        <Answer minister="Communication">On lance des salves de missiles de croisière. Ça fait de belles images
-	            abstraites dans la nuit et on évite toute perte humaine.
+	        <Answer minister="Communication">
+            On lance des salves de missiles de croisière. Ça fait de belles images abstraites dans la nuit et on évite toute perte humaine.
 	            <parameter minister="Communication" operation="+" value="3"/>
 	            <parameter minister="Security" operation="+" value="2"/>
 	            <parameter minister="Foreign" operation="-" value="2"/>
 	            <parameter minister="Financial" operation="-" value="1"/>
 	        </Answer>
-	        <Answer minister="Financial">On lance les escadrilles de Rafale. Ça nous coûte moins cher que les missiles et
-	            c’est une belle démonstration de nos prouesses techniques.
+	        <Answer minister="Financial">
+            On lance les escadrilles de Rafale. Ça nous coûte moins cher que les missiles et c’est une belle démonstration de nos prouesses techniques.
 	            <parameter minister="Financial" operation="+" value="3"/>
 	            <parameter minister="Security" operation="+" value="2"/>
 	            <parameter minister="Foreign" operation="-" value="2"/>
 	            <parameter minister="Communication" operation="-" value="1"/>
 	        </Answer>
 	    </Decision>
-	    <Decision minister="Communication">Vous sortez d’un conseil des ministres exceptionnel et vous affrontez les
-	        journalistes. Les ministres de l’intérieur et de la défense vous ont précédé, ce n’est donc pas la peine de
-	        revenir sur les opérations de guerre et de sécurité. Votre job, c’est de penser la réélection du président dans
-	        quatre jours.
+	    <Decision minister="Communication">
+        Vous sortez d’un conseil des ministres exceptionnel et vous affrontez les journalistes. 
+        Les ministres de l’intérieur et de la défense vous ont précédé, ce n’est donc pas la peine de revenir sur les opérations de guerre et de sécurité. Votre job, c’est de penser la réélection du président dans quatre jours.
 	        Quel argument mettez vous en avant ?
-	        <Answer minister="Financial">Nos efforts économiques ont enfin payé. Aujourd’hui, nous sommes capables de
-	            projeter nos soldats à l’étranger et d’embaucher plusieurs milliers de nouveaux policiers pour faire face à
-	            la menace terroriste.
+	        <Answer minister="Financial">
+            Nos efforts économiques ont enfin payé. Aujourd’hui, nous sommes capables de projeter nos soldats à l’étranger et d’embaucher plusieurs milliers de nouveaux policiers pour faire face à la menace terroriste.
 	            <parameter minister="Financial" operation="+" value="3"/>
 	            <parameter minister="Communication" operation="+" value="2"/>
 	            <parameter minister="Foreign" operation="-" value="2"/>
 	            <parameter minister="Security" operation="-" value="1"/>
 	        </Answer>
-	        <Answer minister="Foreign">Les événements des derniers jours, aussi douloureux soient-ils, ont bien montré notre
-	            influence sur la scène internationale. La France est un pays respecté et l’on compte sur nous pour sortir de
-	            cette crise.
+	        <Answer minister="Foreign">
+            Les événements des derniers jours, aussi douloureux soient-ils, ont bien montré notre influence sur la scène internationale. La France est un pays respecté et l’on compte sur nous pour sortir de cette crise.
 	            <parameter minister="Foreign" operation="+" value="3"/>
 	            <parameter minister="Communication" operation="+" value="2"/>
 	            <parameter minister="Financial" operation="-" value="2"/>
 	            <parameter minister="Security" operation="-" value="1"/>
 	        </Answer>
 	    </Decision>
-	    <Decision minister="Financial">Comme une mauvaise nouvelle ne tombe jamais seule, l’INSEE s’apprête à annoncer une
-	        augmentation du nombre de chômeurs lors du dernier mois, ainsi qu’un accroissement du déficit budgétaire.
-	        Pour montrer que vous êtes un ministre responsable, au service d’un président responsable, même en période de
-	        crise, il faut faire une annonce pour montrer que vous êtes sur le pont. Laquelle ?
-	        <Answer minister="Security">Nous devons tout faire pour préserver une grande armée et notre capacité de
-	            projection. Nous allons devoir faire des choix difficile, mais le budget de la défense ne sera pas affecté.
+	    <Decision minister="Financial">
+        Comme une mauvaise nouvelle ne tombe jamais seule, l’INSEE s’apprête à annoncer une augmentation du nombre de chômeurs lors du dernier mois, ainsi qu’un accroissement du déficit budgétaire.
+	        Pour montrer que vous êtes un ministre responsable, au service d’un président responsable, même en période de crise, il faut faire une annonce pour montrer que vous êtes sur le pont. Laquelle ?
+	        <Answer minister="Security">
+            Nous devons tout faire pour préserver une grande armée et notre capacité de projection. Nous allons devoir faire des choix difficile, mais le budget de la défense ne sera pas affecté.
 	            <parameter minister="Security" operation="+" value="3"/>
 	            <parameter minister="Communication" operation="+" value="2"/>
 	            <parameter minister="Foreign" operation="-" value="2"/>
 	            <parameter minister="Financial" operation="-" value="1"/>
 	        </Answer>
-	        <Answer minister="Foreign">La situation actuelle souligne combien nous sommes dans un monde interdépendant et
-	            fragile. La seule solution, c’est la coopération internationale. Nous plaidons en faveur d’une armée
-	            européenne, qui permettra de partager le coût des interventions extérieures avec nos partenaires.
+	        <Answer minister="Foreign">
+            La situation actuelle souligne combien nous sommes dans un monde interdépendant et fragile. La seule solution, c’est la coopération internationale. Nous plaidons en faveur d’une armée européenne, qui permettra de partager le coût des interventions extérieures avec nos partenaires.
 	            <parameter minister="Foreign" operation="+" value="3"/>
 	            <parameter minister="Financial" operation="+" value="2"/>
 	            <parameter minister="Security" operation="-" value="2"/>
 	            <parameter minister="Communication" operation="-" value="1"/>
 	        </Answer>
 	    </Decision>
-	    <Decision minister="Foreign">Le président vous a chargé de bâtir une coalition internationale pour soutenir nos
-	        frappes militaires sur l’EL. Vous avez sondé vos meilleurs alliés : certains sont plus enthousiastes que
-	        d’autres, certains posent des conditions, etc. Au final, vous avez deux coalitions envisageables.
+	    <Decision minister="Foreign">
+        Le président vous a chargé de bâtir une coalition internationale pour soutenir nos frappes militaires sur l’EL. Vous avez sondé vos meilleurs alliés : certains sont plus enthousiastes que d’autres, certains posent des conditions, etc. Au final, vous avez deux coalitions envisageables.
 	        Laquelle soumettez-vous au président ?
-	        <Answer minister="Security">Les voisins de l’Assyria se sont prêts à se rallier à nous. Ils ont l’armement et
-	            les renseignements nécessaires pour être des partenaires efficaces, mais leur pratiques en matière de
-	            démocratie et de droits de l’Homme ne sont pas vraiment recommandables.
+	        <Answer minister="Security">
+            Les voisins de l’Assyria se sont prêts à se rallier à nous. Ils ont l’armement et les renseignements nécessaires pour être des partenaires efficaces, mais leurs pratiques en matière de démocratie et de droits de l’Homme ne sont pas vraiment recommandables.
 	            <parameter minister="Security" operation="+" value="3"/>
 	            <parameter minister="Foreign" operation="+" value="2"/>
 	            <parameter minister="Communication" operation="-" value="2"/>
 	            <parameter minister="Financial" operation="-" value="1"/>
 	        </Answer>
-	        <Answer minister="Communication">Nos amis européens sont disposés à se ranger derrière nous: il nous offrent un
-	            avion, deux tanks et du ravitaillement. Ce n’est pas génial, mais ils sont prêts à venir à Paris pour une
-	            réunion au sommet et à poser pour une belle photo autour de vous.
+	        <Answer minister="Communication">
+            Nos amis européens sont disposés à se ranger derrière nous: il nous offrent un avion, deux tanks et du ravitaillement. Ce n’est pas génial, mais ils sont prêts à venir à Paris pour une réunion au sommet et à poser pour une belle photo autour de vous.
 	            <parameter minister="Communication" operation="+" value="3"/>
 	            <parameter minister="Foreign" operation="+" value="2"/>
 	            <parameter minister="Financial" operation="-" value="2"/>
@@ -259,82 +244,72 @@ Le Président doit répondre à cette crise impromptue.
 	<Situation>
 	En voulant bombarder une colonne de pick-ups de l’EL, les avions rossivites ont frappé par erreur un hôpital pour enfants victimes de la guerre. 
 	Ramon Alvarez, le secrétaire général de la SNUP (Société des Nations Unies pour la Paix) appelle à un cessez-le-feu immédiat de toutes les parties.
-
-	    <Decision minister="Foreign">Vous arrivez au siège de la SNUP. Vous ne pouvez pas couper à une conférence de presse
-	        improvisée.
+	    <Decision minister="Foreign">
+        Vous arrivez au siège de la SNUP. Vous ne pouvez pas couper à une conférence de presse improvisée.
 	        Que faites-vous ?
-	        <Answer minister="Communication">Vous allez vous positionner devant la reproduction de Guernica et expliquez
-	            qu’il faut à tout prix parvenir à un cessez-le-feu.
+	        <Answer minister="Communication">
+            Vous allez vous positionner devant la reproduction de Guernica et expliquez qu’il faut à tout prix parvenir à un cessez-le-feu.
 	            <parameter minister="Communication" operation="+" value="3"/>
 	            <parameter minister="Foreign" operation="+" value="2"/>
 	            <parameter minister="Security" operation="-" value="2"/>
 	            <parameter minister="Financial" operation="-" value="1"/>
 	        </Answer>
-	        <Answer minister="Security">Vous rassemblez à la va-vite quelques diplomates africains et, en leur compagnie,
-	            vous expliquez que la force est parfois nécessaire pour combattre le mal afin d’éviter de nouveaux Rwanda.
+	        <Answer minister="Security">
+            Vous rassemblez à la va-vite quelques diplomates africains et, en leur compagnie, vous expliquez que la force est parfois nécessaire pour combattre le mal afin d’éviter de nouveaux Rwanda.
 	            <parameter minister="Foreign" operation="+" value="3"/>
 	            <parameter minister="Security" operation="+" value="2"/>
 	            <parameter minister="Communication" operation="-" value="2"/>
 	            <parameter minister="Financial" operation="-" value="1"/>
 	        </Answer>
 	    </Decision>
-	    <Decision minister="Security">Vous témoignez devant la commission de la défense de l’Assemblée nationale, quand un
-	        député communiste vous interpelle violemment en vous demandant si les avions français vont, eux aussi, cibler
-	        des hôpitaux ?
+	    <Decision minister="Security">
+        Vous témoignez devant la commission de la défense de l’Assemblée nationale, quand un député communiste vous interpelle violemment en vous demandant si les avions français vont, eux aussi, cibler des hôpitaux ?
 	        Que lui répondez-vous ?
-	        <Answer minister="Financial">Monsieur le député, vous étiez moins critique de nos forces armées quand Bercy a
-	            choisi d’implanter une usine de fabrication de trains d'atterrissage pour Rafale dans votre circonscription
-	            et que vous avez coupé le ruban lors de son inauguration !
+	        <Answer minister="Financial">
+            Monsieur le député, vous étiez moins critique de nos forces armées quand Bercy a choisi d’implanter une usine de fabrication de trains d'atterrissage pour Rafale dans votre circonscription et que vous avez coupé le ruban lors de son inauguration !
 	            <parameter minister="Financial" operation="+" value="3"/>
 	            <parameter minister="Security" operation="+" value="2"/>
 	            <parameter minister="Foreign" operation="-" value="2"/>
 	            <parameter minister="Communication" operation="-" value="1"/>
 	        </Answer>
-	        <Answer minister="Communication">Monsieur le député, je comprends votre colère légitime. Sachez que nos forces
-	            armées disposent des meilleurs systèmes de guidage au monde. Je vous propose dès demain de m’accompagner
-	            dans la salle de guerre, en compagnie du Président, pour le vérifier.
+	        <Answer minister="Communication">
+            Monsieur le député, je comprends votre colère légitime. Sachez que nos forces armées disposent des meilleurs systèmes de guidage au monde. Je vous propose dès demain de m’accompagner dans la salle de guerre, en compagnie du Président, pour le vérifier.
 	            <parameter minister="Communication" operation="+" value="3"/>
 	            <parameter minister="Security" operation="+" value="2"/>
 	            <parameter minister="Foreign" operation="-" value="2"/>
 	            <parameter minister="Financial" operation="-" value="1"/>
 	        </Answer>
 	    </Decision>
-	    <Decision minister="Communication">Un journaliste vous appelle sur votre portable. Une source lui a révélé qu’il y
-	        avait des dissensions au sein du gouvernement à propos de la décision d’intervenir militairement en Assyria.
-	        C’est évidemment vrai et le reporter le sait.
+	    <Decision minister="Communication">
+        Un journaliste vous appelle sur votre portable. Une source lui a révélé qu’il y avait des dissensions au sein du gouvernement à propos de la décision d’intervenir militairement en Assyria. C’est évidemment vrai et le reporter le sait.
 	        Comment faites-vous pour minorer ces divergences au sein du gouvernement ?
-	        <Answer minister="Foreign">Vous expliquez que le ministre des affaires étrangères estime que la diplomatie doit
-	            continuer à être prioritaire et que c’est pour cela qu’il est parti au siège de la SNUP pour tenter de
-	            trouver une solution, tout en respectant les avis des autres ministres.
+	        <Answer minister="Foreign">
+            Vous expliquez que le ministre des affaires étrangères estime que la diplomatie doit continuer à être prioritaire et que c’est pour cela qu’il est parti au siège de la SNUP pour tenter de trouver une solution, tout en respectant les avis des autres ministres.
 	            <parameter minister="Foreign" operation="+" value="3"/>
 	            <parameter minister="Communication" operation="+" value="2"/>
 	            <parameter minister="Security" operation="-" value="2"/>
 	            <parameter minister="Financial" operation="-" value="1"/>
 	        </Answer>
-	        <Answer minister="Financial">Vous lui avouez que le ministre des Finances a renâclé face au coût de
-	            l'intervention en période de disette budgétaire, mais qu’en bon soldat du gouvernement, il a choisi de taire
-	            sa différence et s’efforce de trouver des recettes supplémentaires.
+	        <Answer minister="Financial">
+            Vous lui avouez que le ministre des Finances a renâclé face au coût de l'intervention en période de disette budgétaire, mais qu’en bon soldat du gouvernement, il a choisi de taire sa différence et s’efforce de trouver des recettes supplémentaires.
 	            <parameter minister="Financial" operation="+" value="3"/>
 	            <parameter minister="Communication" operation="+" value="2"/>
 	            <parameter minister="Foreign" operation="-" value="2"/>
 	            <parameter minister="Security" operation="-" value="1"/>
 	        </Answer>
 	    </Decision>
-	    <Decision minister="Financial">Vous témoignez devant la commission des finances de l’Assemblée nationale, quand une
-	        députée écologiste vous interpelle violemment en vous demandant à quoi sert tout ce gaspillage d’argent pour des
-	        frappes militaires qui tuent des civils ?
+	    <Decision minister="Financial">
+        Vous témoignez devant la commission des finances de l’Assemblée nationale, quand une députée écologiste vous interpelle violemment en vous demandant à quoi sert tout ce gaspillage d’argent pour des frappes militaires qui tuent des civils ?
 	        Que lui répondez-vous ?
-	        <Answer minister="Foreign">Madame la députée, vous savez bien que le Président a envoyé notre ministre des
-	            affaires étrangères au siège de la SNUP pour tenter de faire passer une résolution de cessez-le-feu et que
-	            l’option militaire complète notre offensive diplomatique.
+	        <Answer minister="Foreign">
+            Madame la députée, vous savez bien que le Président a envoyé notre ministre des affaires étrangères au siège de la SNUP pour tenter de faire passer une résolution de cessez-le-feu et que l’option militaire complète notre offensive diplomatique.
 	            <parameter minister="Foreign" operation="+" value="3"/>
 	            <parameter minister="Financial" operation="+" value="2"/>
 	            <parameter minister="Security" operation="-" value="2"/>
 	            <parameter minister="Communication" operation="-" value="1"/>
 	        </Answer>
-	        <Answer minister="Security">Madame la députée, vous étiez moins critique de nos dépenses militaires quand le
-	            ministère de la Défense a décidé d’implanter son usine de recherche sur les carburants bio pour les blindés
-	            dans votre circonscription.
+	        <Answer minister="Security">
+            Madame la députée, vous étiez moins critique de nos dépenses militaires quand le ministère de la Défense a décidé d’implanter son usine de recherche sur les carburants bio pour les blindés dans votre circonscription.
 	            <parameter minister="Security" operation="+" value="3"/>
 	            <parameter minister="Financial" operation="+" value="2"/>
 	            <parameter minister="Foreign" operation="-" value="2"/>
@@ -346,88 +321,75 @@ Le Président doit répondre à cette crise impromptue.
 	<Situation>
 	Le premier ministre du petit ’État d’Irazel, voisin de l’Assyria, a revêtu sa tenue militaire et s’est rendu sur un terrain d’aviation où il a annoncé avoir mis en état d’alerte sa flotte de bombardiers nucléaires. 
 	En dévoilant ce secret de polichinelle et en avertissant qu’il est prêt à utiliser le feu atomique, il se moque de bouleverser l’équilibre mondial de la dissuasion.
-	    <Decision minister="Communication">Les médias accusent le Président de ne jamais avoir avoué publiquement qu’Irazel
-	        détenait l’arme nucléaire alors que les services de renseignements français le savent depuis longtemps,
-	        contribuant ainsi à entretenir un secret néfaste pour la paix mondiale.
+	    <Decision minister="Communication">
+        Les médias accusent le Président de ne jamais avoir avoué publiquement qu’Irazel détenait l’arme nucléaire alors que les services de renseignements français le savent depuis longtemps, contribuant ainsi à entretenir un secret néfaste pour la paix mondiale.
 	        Vous écrivez deux communiqués de presse pour défendre le Président. Lequel envoyez-vous aux médias ?
-	        <Answer minister="Security">L’État d’Irazel est un de nos plus anciens alliés. Nous avons un partenariat
-	            militaire avec eux dans le cadre duquel ils nous ont demandé de respecter ce secret. Quel responsable
-	            politique irait trahir la confiance entre frères d’armes ?
+	        <Answer minister="Security">
+            L’État d’Irazel est un de nos plus anciens alliés. Nous avons un partenariat militaire avec eux dans le cadre duquel ils nous ont demandé de respecter ce secret. Quel responsable politique irait trahir la confiance entre frères d’armes ?
 	            <parameter minister="Security" operation="+" value="3"/>
 	            <parameter minister="Communication" operation="+" value="2"/>
 	            <parameter minister="Foreign" operation="-" value="2"/>
 	            <parameter minister="Financial" operation="-" value="1"/>
 	        </Answer>
-	        <Answer minister="Foreign">L’État d’Irazel est un de nos plus anciens alliés. Comme le sont également d’autres
-	            pays de la région. Afin de ne pas ajouter aux tensions d’une zone géographique très sensible, nous avons
-	            choisi de préserver le silence. C’est la marque d’un grand responsable politique que de rester discret pour
-	            préserver la paix.
+	        <Answer minister="Foreign">
+            L’État d’Irazel est un de nos plus anciens alliés. Comme le sont également d’autres pays de la région. Afin de ne pas ajouter aux tensions d’une zone géographique très sensible, nous avons choisi de préserver le silence. C’est la marque d’un grand responsable politique que de rester discret pour préserver la paix.
 	            <parameter minister="Foreign" operation="+" value="3"/>
 	            <parameter minister="Communication" operation="+" value="2"/>
 	            <parameter minister="Security" operation="-" value="2"/>
 	            <parameter minister="Financial" operation="-" value="1"/>
 	        </Answer>
 	    </Decision>
-	    <Decision minister="Security">Le cheikh du puissant Royaume de Raqqa est au téléphone et il n’est pas content. Il
-	        vient de remarquer sur les images vidéos en provenance d’Irazel que les bombardiers atomiques sont équipés de
-	        missiles français dernière génération alors que vous lui aviez promis qu’il serait le premier à en disposer.
-	        Vous êtes parfaitement au courant de ce problème, car c’est vous qui avez signé les contrats.
+	    <Decision minister="Security">
+        Le cheikh du puissant Royaume de Raqqa est au téléphone et il n’est pas content. Il vient de remarquer sur les images vidéos en provenance d’Irazel que les bombardiers atomiques sont équipés de missiles français dernière génération alors que vous lui aviez promis qu’il serait le premier à en disposer. Vous êtes parfaitement au courant de ce problème, car c’est vous qui avez signé les contrats.
 	        Vers qui renvoyez-vous la faute ?
-	        <Answer minister="Financial">Ce sont ces incapables de diplomates qui ne vous ont pas informé à temps. Mais
-	            rassurez-vous, le ministre des finances est parfaitement disposé à votre égard, et je suis sûr qu’il vous
-	            fera une ristourne sur les prochains contrats.
+	        <Answer minister="Financial">
+            Ce sont ces incapables de diplomates qui ne vous ont pas informé à temps. Mais rassurez-vous, le ministre des finances est parfaitement disposé à votre égard, et je suis sûr qu’il vous fera une ristourne sur les prochains contrats.
 	            <parameter minister="Financial" operation="+" value="3"/>
 	            <parameter minister="Security" operation="+" value="2"/>
 	            <parameter minister="Communication" operation="-" value="2"/>
 	            <parameter minister="Financial" operation="-" value="1"/>
 	        </Answer>
-	        <Answer minister="Foreign">Il y a eu un blocage du côté de Bercy en raison de la lutte contre les réseaux
-	            financiers terroristes. Mais je suis sûr que le ministre des affaires étrangères saurait vaincre les
-	            réticences des fonctionnaires des finances, car vous êtes un de nos plus proches alliés.
+	        <Answer minister="Foreign">
+            Il y a eu un blocage du côté de Bercy en raison de la lutte contre les réseaux financiers terroristes. Mais je suis sûr que le ministre des affaires étrangères saurait vaincre les réticences des fonctionnaires des finances, car vous êtes un de nos plus proches alliés.
 	            <parameter minister="Foreign" operation="+" value="3"/>
 	            <parameter minister="Security" operation="+" value="2"/>
 	            <parameter minister="Financial" operation="-" value="2"/>
 	            <parameter minister="Communication" operation="-" value="1"/>
 	        </Answer>
 	    </Decision>
-	    <Decision minister="Financial">Le cheikh du Royaume de Raqqa vous envoie son ambassadeur. 
+	    <Decision minister="Financial">
+        Le cheikh du Royaume de Raqqa vous envoie son ambassadeur. 
 	    Il veut acquérir les missiles français de dernière génération qu’il a vu à la TV sur les bombardiers d’Irazel. 
 	    Le ministre de la défense n’y voit pas d’objection car Raqqa est un partenaire militaire précieux. 
 	    Mais vous avez devant vous tous les rapports d’Amnesty ainsi que les sondages montrant le niveau considérable de détestation de Raqqa dans l’opinion publique.
 	     Vous envoyez votre directeur de cabinet accueillir l’ambassadeur avec la consigne suivante :
-	        <Answer minister="Communication">Dis à cet enturbané que tant qu’il n’autorisera pas les femmes à conduire et ne
-	            cessera pas les lapidations publiques, il peut se carrer nos missiles où je pense ! Bon, tu y mets les
-	            formes, hein ! Et tu balances l’information à un journaliste de gauche pour nous faire bien voir.
+	        <Answer minister="Communication">
+            Dis à cet enturbané que tant qu’il n’autorisera pas les femmes à conduire et ne cessera pas les lapidations publiques, il peut se carrer nos missiles où je pense ! Bon, tu y mets les formes, hein ! Et tu balances l’information à un journaliste de gauche pour nous faire bien voir.
 	            <parameter minister="Communication" operation="+" value="3"/>
 	            <parameter minister="Financial" operation="+" value="2"/>
 	            <parameter minister="Foreign" operation="-" value="2"/>
 	            <parameter minister="Security" operation="-" value="1"/>
 	        </Answer>
-	        <Answer minister="Security">Demande-lui s’il a amené des valises de biftons avec lui, car il va les payer
-	            premium nos missiles ! Mais bon, s’il les balances sur l’EL, et qu’il nous autorise à utiliser ses bases
-	            militaires, ça nous va. Tu lui passes un peu de pommade, hein !
+	        <Answer minister="Security">
+            Demande-lui s’il a amené des valises de biftons avec lui, car il va les payer premium nos missiles ! Mais bon, s’il les balances sur l’EL, et qu’il nous autorise à utiliser ses bases militaires, ça nous va. Tu lui passes un peu de pommade, hein !
 	            <parameter minister="Security" operation="+" value="3"/>
 	            <parameter minister="Financial" operation="+" value="2"/>
 	            <parameter minister="Foreign" operation="-" value="2"/>
 	            <parameter minister="Communication" operation="-" value="1"/>
 	        </Answer>
 	    </Decision>
-	    <Decision minister="Foreign">Vous êtes toujours au siège de la SNUP. Le Secrétaire général Ramon Alvarez demande à
-	        vous voir seul à seul. Il voudrait que la France envoie un émissaire en Irazel pour voir s’il n’est pas possible
-	        d’entamer une désescalade. Pour se prémunir d’un échec, il ne faut pas s’engager à trop haut niveau. Cela vous
-	        exclut, de même que le Président bien évidemment.
+	    <Decision minister="Foreign">
+        Vous êtes toujours au siège de la SNUP. Le Secrétaire général Ramon Alvarez demande à vous voir seul à seul. Il voudrait que la France envoie un émissaire en Irazel pour voir s’il n’est pas possible d’entamer une désescalade. Pour se prémunir d’un échec, il ne faut pas s’engager à trop haut niveau. Cela vous exclut, de même que le Président bien évidemment.
 	        Qui recommandez-vous pour cette mission ?
-	        <Answer minister="Communication">Il faut envoyer le ministre de la communication. Il a très bien défendu le
-	            droit d’Irazel à posséder l’arme nucléaire. Son problème c’est qu’il pourrait braquer les autres pays de la
-	            région.
+	        <Answer minister="Communication">
+            Il faut envoyer le ministre de la communication. Il a très bien défendu le droit d’Irazel à posséder l’arme nucléaire. Son problème c’est qu’il pourrait braquer les autres pays de la région.
 	            <parameter minister="Communication" operation="+" value="3"/>
 	            <parameter minister="Foreign" operation="+" value="2"/>
 	            <parameter minister="Security" operation="-" value="2"/>
 	            <parameter minister="Financial" operation="-" value="1"/>
 	        </Answer>
-	        <Answer minister="Financial">Il faut envoyer le ministre des finances. C’est lui qui a autorisé les transferts
-	            de technologie nucléaire vers Irazel. Le problème c’est que la Grande Rossovie pourrait mal le prendre car
-	            il est le responsable de la mise en oeuvre des sanctions contre elle.
+	        <Answer minister="Financial">
+            Il faut envoyer le ministre des finances. C’est lui qui a autorisé les transferts de technologie nucléaire vers Irazel. Le problème c’est que la Grande Rossovie pourrait mal le prendre car il est le responsable de la mise en oeuvre des sanctions contre elle.
 	            <parameter minister="Financial" operation="+" value="3"/>
 	            <parameter minister="Foreign" operation="+" value="2"/>
 	            <parameter minister="Communication" operation="-" value="2"/>
@@ -440,81 +402,75 @@ Le Président doit répondre à cette crise impromptue.
 		Des réfugiés assyrians fuient leur pays en masse depuis plusieurs jours. 
 		Aujourd’hui, ils arrivent en Europe à pied, en camion, par bateau, et ils font la queue devant les consulats, notamment français, dans les pays voisins pour demander des visas. 
 		Toutes les chaînes télévisées diffusent ces images de misère qui serrent le coeur. 
-	    <Decision minister="Financial">Vous êtes en première ligne car le Président n’a cessé de répéter depuis plusieurs
-	        années que la France n’était pas assez riche pour accueillir tous les réfugiés du monde. L’argument économique a
-	        supplanté l’argument humanitaire. A deux jours de l’élection, il ne veut pas paraître insensible à l’émotion
-	        populaire, mais il ne veut pas revenir sur ses positions. Il vous demande votre avis.
+	    <Decision minister="Financial">
+        Vous êtes en première ligne car le Président n’a cessé de répéter depuis plusieurs années que la France n’était pas assez riche pour accueillir tous les réfugiés du monde. L’argument économique a supplanté l’argument humanitaire. A deux jours de l’élection, il ne veut pas paraître insensible à l’émotion populaire, mais il ne veut pas revenir sur ses positions. Il vous demande votre avis.
 	        Que lui conseillez-vous ?
-	        <Answer minister="Foreign">Sortez-en par le haut. Proposez une grande conférence mondiale sur les réfugiés dans
-	            laquelle la France prendra sa part du fardeau avec les autres pays de la SNUP. Dites au ministre des
-	            affaires étrangères d’en parler à Ramon Alvarez.
+	        <Answer minister="Foreign">
+            Sortez-en par le haut. Proposez une grande conférence mondiale sur les réfugiés dans laquelle la France prendra sa part du fardeau avec les autres pays de la SNUP. Dites au ministre des affaires étrangères d’en parler à Ramon Alvarez.
 	            <parameter minister="Foreign" operation="+" value="3"/>
 	            <parameter minister="Financial" operation="+" value="2"/>
 	            <parameter minister="Security" operation="-" value="2"/>
 	            <parameter minister="Communication" operation="-" value="1"/>
 	        </Answer>
-	        <Answer minister="Communication">Montrez votre bon coeur. Allez dans un centre d’accueil pour réfugiés ou alors
-	            à l’aéroport pour les accueillir. Cela ne grèvera pas le budget, mais les gens seront sensibles à votre
-	            geste.
+	        <Answer minister="Communication">
+            Montrez votre bon coeur. Allez dans un centre d’accueil pour réfugiés ou alors à l’aéroport pour les accueillir. Cela ne grèvera pas le budget, mais les gens seront sensibles à votre geste.
 	            <parameter minister="Communication" operation="+" value="3"/>
 	            <parameter minister="Financial" operation="+" value="2"/>
 	            <parameter minister="Foreign" operation="-" value="2"/>
 	            <parameter minister="Security" operation="-" value="1"/>
 	        </Answer>
 	    </Decision>
-	    <Decision minister="Foreign">Vos diplomates sont d’avis qu’il faut agir humainement avec les réfugiés, mais les conseillers du président craignent le vote de l’extrême droite lors du scrutin et ne veulent pas relâcher la politique des visas. 
+	    <Decision minister="Foreign">
+        Vos diplomates sont d’avis qu’il faut agir humainement avec les réfugiés, mais les conseillers du président craignent le vote de l’extrême droite lors du scrutin et ne veulent pas relâcher la politique des visas. 
 	    Vous avez un rendez-vous avec Malek Teral, grande figure humanitaire et médiatique. 
 	    Vous ne pouvez pas blâmer le président, mais vous savez que l’explication que vous allez lui livrer filtrera dans les médias immédiatement. 
 	    Comment justifiez-vous la décision de ne pas accueillir de réfugiés ?
-	        <Answer minister="Financial">Le ministre des finances était d’accord pour débloquer des fonds pour l’accueil des
-	            réfugiés, mais les services de renseignements nous ont dit qu’il fallait nous méfier des terroristes
-	            infiltrés.
+	        <Answer minister="Financial">
+            Le ministre des finances était d’accord pour débloquer des fonds pour l’accueil des réfugiés, mais les services de renseignements nous ont dit qu’il fallait nous méfier des terroristes infiltrés.
 	            <parameter minister="Financial" operation="+" value="3"/>
 	            <parameter minister="Foreign" operation="+" value="2"/>
 	            <parameter minister="Communication" operation="-" value="2"/>
 	            <parameter minister="Security" operation="-" value="1"/>
 	        </Answer>
-	        <Answer minister="Security">Les services de renseignement étaient d’accord pour faire des heures supplémentaires
-	            et examiner toutes les demandes de visa, mais le ministère du logement nous a avertit que nous n’avons pas
-	            la capacité d’accueil suffisante et que les réfugiés finiraient dans la rue.
+	        <Answer minister="Security">
+            Les services de renseignement étaient d’accord pour faire des heures supplémentaires et examiner toutes les demandes de visa, mais le ministère du logement nous a avertit que nous n’avons pas la capacité d’accueil suffisante et que les réfugiés finiraient dans la rue.
 	            <parameter minister="Security" operation="+" value="3"/>
 	            <parameter minister="Foreign" operation="+" value="2"/>
 	            <parameter minister="Communication" operation="-" value="2"/>
 	            <parameter minister="Financial" operation="-" value="1"/>
 	        </Answer>
 	    </Decision>
-	    <Decision minister="Communication">La grande figure humanitaire et médiatique Malek Teral est sur toutes les ondes.
+	    <Decision minister="Communication">
+        La grande figure humanitaire et médiatique Malek Teral est sur toutes les ondes.
 	        Il dénonce l’obstination du Président à fermer les portes de la France à la misère du monde.
 	        Vous décidez de lui envoyer un sms directement dans l’espoir qu’il va infléchir sa critique. Lequel ?
-	        <Answer minister="Financial">Malek mon ami, apl moi. Bercy prêt à faire effort budgetaire pour réfugiés, mais
-	            besoin de toi pour contrer extr-droite !
+	        <Answer minister="Financial">
+            Malek mon ami, apl moi. Bercy prêt à faire effort budgetaire pour réfugiés, mais besoin de toi pour contrer extr-droite !
 	            <parameter minister="Financial" operation="+" value="3"/>
 	            <parameter minister="Communication" operation="+" value="2"/>
 	            <parameter minister="Foreign" operation="-" value="2"/>
 	            <parameter minister="Security" operation="-" value="1"/>
 	        </Answer>
-	        <Answer minister="Security">Malek mon ami, apl moi. Situation tendue avec menace terroriste mais ouverture
-	            possible si tu défends frappes humanitaires.
+	        <Answer minister="Security">
+            Malek mon ami, apl moi. Situation tendue avec menace terroriste mais ouverture possible si tu défends frappes humanitaires.
 	            <parameter minister="Security" operation="+" value="3"/>
 	            <parameter minister="Communication" operation="+" value="2"/>
 	            <parameter minister="Foreign" operation="-" value="2"/>
 	            <parameter minister="Financial" operation="-" value="1"/>
 	        </Answer>
 	    </Decision>
-	    <Decision minister="Security">Il est plus de 23 heures quand le président vous appelle chez vous. C’est généralement
-	        l’heure où des idées bizarres lui passent par la tête. Il voudrait que les navires de la Marine se déroutent
-	        pour sauver les embarcations de réfugiés en mer.
+	    <Decision minister="Security">
+        Il est plus de 23 heures quand le président vous appelle chez vous. C’est généralement l’heure où des idées bizarres lui passent par la tête. Il voudrait que les navires de la Marine se déroutent pour sauver les embarcations de réfugiés en mer.
 	        Que lui répondez-vous ?
-	        <Answer minister="Communication">Ça doit être possible, Monsieur le président. Je vais voir avec le ministre de
-	            la communication pour savoir sur lesquels de nos navires il y a des journalistes embarqués.
+	        <Answer minister="Communication">
+            Ça doit être possible, Monsieur le président. Je vais voir avec le ministre de la communication pour savoir sur lesquels de nos navires il y a des journalistes embarqués.
 	            <parameter minister="Communication" operation="+" value="3"/>
 	            <parameter minister="Security" operation="+" value="2"/>
 	            <parameter minister="Foreign" operation="-" value="2"/>
 	            <parameter minister="Financial" operation="-" value="1"/>
 	        </Answer>
-	        <Answer minister="Foreign">Cela me paraît compliqué, Monsieur le président. Mais le ministre des affaires
-	            étrangères m’a parlé d’organiser un sommet mondial sur les réfugié. Cela me paraît être une idée bien plus
-	            efficace.
+	        <Answer minister="Foreign">
+            Cela me paraît compliqué, Monsieur le président. Mais le ministre des affaires étrangères m’a parlé d’organiser un sommet mondial sur les réfugié. Cela me paraît être une idée bien plus efficace.
 	            <parameter minister="Foreign" operation="+" value="3"/>
 	            <parameter minister="Security" operation="+" value="2"/>
 	            <parameter minister="Financial" operation="-" value="2"/>
@@ -528,63 +484,71 @@ Le Président doit répondre à cette crise impromptue.
 		Ramon Alvarez a décidé de saisir cette opportunité pour convoquer une réunion du Conseil spécial de la SNUP au niveau des chefs d’Etat. 
 		Il demande au Président d’intervenir pour proposer un plan de paix. 
 		C’est une occasion énorme de briller sur la scène internationale à un jour du scrutin présidentiel, mais c’est aussi un risque énorme.
-	    <Decision minister="Communication">Le Président vous appelle et vous fait part de la proposition de Ramon Alvarez.
+	    <Decision minister="Communication">
+        Le Président vous appelle et vous fait part de la proposition de Ramon Alvarez.
 	        Que lui conseillez-vous ?
-	        <Answer minister="Foreign">Il faut toujours donner une chance à la paix. Allez-y !
+	        <Answer minister="Foreign">
+            Il faut toujours donner une chance à la paix. Allez-y !
 	            <parameter minister="Foreign" operation="+" value="3"/>
 	            <parameter minister="Communication" operation="+" value="2"/>
 	            <parameter minister="Security" operation="-" value="2"/>
 	            <parameter minister="Financial" operation="-" value="1"/>
 	        </Answer>
-	        <Answer minister="Security">Le risque d’échec est trop grand. Attendons d’avoir affaibli davantage l’EL.
+	        <Answer minister="Security">
+            Le risque d’échec est trop grand. Attendons d’avoir affaibli davantage l’EL.
 	            <parameter minister="Security" operation="+" value="3"/>
 	            <parameter minister="Communication" operation="+" value="2"/>
 	            <parameter minister="Foreign" operation="-" value="2"/>
 	            <parameter minister="Financial" operation="-" value="1"/>
 	        </Answer>
 	    </Decision>
-	    <Decision minister="Security">Le Président vous appelle et vous fait part de la proposition de Ramon Alvarez.
+	    <Decision minister="Security">
+        Le Président vous appelle et vous fait part de la proposition de Ramon Alvarez.
 	        Que lui conseillez-vous ?
-	        <Answer minister="Security">C’est encore trop tôt. Nos troupe ont à peine entamé le boulot.
+	        <Answer minister="Security">
+            C’est encore trop tôt. Nos troupe ont à peine entamé le boulot.
 	            <parameter minister="Security" operation="+" value="3"/>
 	            <parameter minister="Communication" operation="+" value="2"/>
 	            <parameter minister="Foreign" operation="-" value="2"/>
 	            <parameter minister="Financial" operation="-" value="1"/>
 	        </Answer>
-	        <Answer minister="Foreign">Il faut accepter. Nos troupes seront toujours là si ça échoue.
+	        <Answer minister="Foreign">
+            Il faut accepter. Nos troupes seront toujours là si ça échoue.
 	            <parameter minister="Foreign" operation="+" value="3"/>
 	            <parameter minister="Security" operation="+" value="2"/>
 	            <parameter minister="Communication" operation="-" value="2"/>
 	            <parameter minister="Financial" operation="-" value="1"/>
 	        </Answer>
 	    </Decision>
-	    <Decision minister="Foreign">Le Président vous appelle et vous fait part de la proposition de Ramon Alvarez.
+	    <Decision minister="Foreign">
+        Le Président vous appelle et vous fait part de la proposition de Ramon Alvarez.
 	        Que lui conseillez-vous ?
-	        <Answer minister="Foreign">C’est une opportunité à ne pas manquer. Foncez !
+	        <Answer minister="Foreign">
+            C’est une opportunité à ne pas manquer. Foncez !
 	            <parameter minister="Foreign" operation="+" value="3"/>
 	            <parameter minister="Security" operation="+" value="2"/>
 	            <parameter minister="Financial" operation="-" value="2"/>
 	            <parameter minister="Communication" operation="-" value="1"/>
 	        </Answer>
-	        <Answer minister="Security">Ca me fait mal de vous déconseiller la diplomatie, mais la machine de la SNUP est
-	            implacable. Vous risquez de vous faire broyer.
+	        <Answer minister="Security">
+            Ca me fait mal de vous déconseiller la diplomatie, mais la machine de la SNUP est implacable. Vous risquez de vous faire broyer.
 	            <parameter minister="Security" operation="+" value="3"/>
 	            <parameter minister="Foreign" operation="+" value="2"/>
 	            <parameter minister="Communication" operation="-" value="2"/>
 	            <parameter minister="Financial" operation="-" value="1"/>
 	        </Answer>
 	    </Decision>
-	    <Decision minister="Financial">Le Président vous appelle et vous fait part de la proposition de Ramon Alvarez.
+	    <Decision minister="Financial">
+        Le Président vous appelle et vous fait part de la proposition de Ramon Alvarez.
 	        Que lui conseillez-vous ?
-	        <Answer minister="Security">Vous savez, je ne crois qu’aux chiffres. Et ceux-ci ne sont pas en votre faveur. Le
-	            monde reste au bord du précipice. Déclinez poliment.
+	        <Answer minister="Security">
+            Vous savez, je ne crois qu’aux chiffres. Et ceux-ci ne sont pas en votre faveur. Le monde reste au bord du précipice. Déclinez poliment.
 	            <parameter minister="Security" operation="+" value="3"/>
 	            <parameter minister="Financial" operation="+" value="2"/>
 	            <parameter minister="Foreign" operation="-" value="2"/>
 	            <parameter minister="Communication" operation="-" value="1"/>
 	        </Answer>
-	        <Answer minister="Communication">Cette intervention nous saigne financièrement. Plus vite on l’arrête, mieux
-	            c’est. Allez à la SNUP.
+	        <Answer minister="Communication">Cette intervention nous saigne financièrement. Plus vite on l’arrête, mieux c’est. Allez à la SNUP.
 	            <parameter minister="Foreign" operation="+" value="3"/>
 	            <parameter minister="Financial" operation="+" value="2"/>
 	            <parameter minister="Security" operation="-" value="2"/>
@@ -592,6 +556,5 @@ Le Président doit répondre à cette crise impromptue.
 	        </Answer>
 	    </Decision>
 	</Situation>
-  -->
 
 </Situations>
